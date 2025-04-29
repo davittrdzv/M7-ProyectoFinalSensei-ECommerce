@@ -1,8 +1,16 @@
-import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import NavBar from './components/NavBar.jsx'
+import RoutesIndex from './routes/RoutesIndex'
+import './styles/styles.css'
 
 const App = () => {
   return (
-    <div>App</div>
+    <>
+      <BrowserRouter>
+        <NavBar />
+        <RoutesIndex />
+      </BrowserRouter>
+    </>
   )
 }
 
