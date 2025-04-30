@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import SearchBar from '../components/SearchBar.jsx'
 
 const NavBar = () => {
   return (
@@ -24,6 +25,9 @@ const NavBar = () => {
             <NavLink className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} to='/about#'>
               About
             </NavLink>
+          </div>
+          <div>
+            <SearchBar />
           </div>
         </div>
       </div>
