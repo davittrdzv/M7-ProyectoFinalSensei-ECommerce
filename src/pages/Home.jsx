@@ -12,7 +12,6 @@ const Home = () => {
             image={product.image || product.images || 'https://picsum.photos/200'} /* La tercer imagen es por el momento como alternativa mientras construyo la página */
             key={product.sku}
             name={product.product_name}
-            description={product.description}
             price={product.price}
             productId={product.id}
           />
