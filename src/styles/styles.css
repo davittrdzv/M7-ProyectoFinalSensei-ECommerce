@@ -1,7 +1,28 @@
 .mt-3_5rem {
-    margin-top: 3.5rem; /* A la par de NavBar */
+    margin-top: 3.5rem !important; /* A la par de NavBar */
 }
 
 .mt-4_0rem {
-    margin-top: 4rem; /* Un poco más abajo de NavBar */
+    margin-top: 4rem !important; /* Un poco más abajo de NavBar */
 }
+
+.text-justify {
+    text-align: justify;
+  }
+
+  .card-title {
+    min-height: 2rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .card-img-top {
+    height: 250px;
+  }
+
+  .card-text.description {
+    min-height: 8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
