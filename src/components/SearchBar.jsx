@@ -1,4 +1,18 @@
+import { useProductContext } from '@/hooks/useProductContext'
+import { useState } from 'react'
+
 const SearchBar = () => {
+  const [search, setSearch] = useState('')
+  const { products, setFilteredProducts } = useProductContext()
+
+  const handleSearch = () => {
+    const searchedProduct = products.filter(product => {
+      return product.product_name.toLowerCase().includes(search.toLowerCase())
+    })
+    setFilteredProducts(searchedProduct)
+    setSearch('')
+  }
+
   return (
     <div className='input-group mb-3'>
       <button
@@ -21,8 +35,14 @@ const SearchBar = () => {
         className='form-control'
         aria-label='Text input with dropdown button'
         placeholder='Search for a product'
+        value={search}
+        onChange={(event) => setSearch(event.target.value)}
       />
-      <button className='btn btn-outline-secondary' type='button'>
+      <button
+        className='btn btn-outline-secondary'
+        type='button'
+        onClick={handleSearch}
+      >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           width='16'
