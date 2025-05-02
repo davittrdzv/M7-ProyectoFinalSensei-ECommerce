@@ -1,10 +1,10 @@
 import { useParams, Navigate } from 'react-router-dom'
-import ProductCardDetails from '../components/ProductCardDetails.jsx'
-import database from '../assets/database.json'
+import ProductCardDetails from '@/components/ProductCardDetails.jsx'
+import { useProductContext } from '@/hooks/useProductContext'
 
 const ProductDetails = () => {
   const { productId } = useParams()
-  const products = database.items
+  const { products } = useProductContext()
   const currentProduct = products.find(product => product.id === productId)
   return (
     currentProduct

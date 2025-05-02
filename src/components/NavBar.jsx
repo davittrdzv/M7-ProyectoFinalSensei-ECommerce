@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom'
-import SearchBar from '../components/SearchBar.jsx'
+import SearchBar from '@/components/SearchBar.jsx'
+import { ProductProvider } from '@/context/productContext.jsx'
 
 const NavBar = () => {
   return (
@@ -27,7 +28,7 @@ const NavBar = () => {
             </NavLink>
           </div>
           <div>
-            <SearchBar />
+            <ProductProvider><SearchBar /></ProductProvider>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
-import ProductCardHome from '../components/ProductCardHome.jsx'
-import database from '../assets/database.json'
+import ProductCardHome from '@/components/ProductCardHome.jsx'
+import { useProductContext } from '@/hooks/useProductContext'
 
 const Home = () => {
-  const products = database.items
+  const { products } = useProductContext()
   return (
     <div className='container border-top border-danger mt-4_0rem'> {/* border-top border-danger son para referencia */}
       <h1 className='text-center'>Home</h1>

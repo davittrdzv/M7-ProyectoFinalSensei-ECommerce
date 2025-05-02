@@ -1,8 +1,8 @@
 import { BrowserRouter } from 'react-router-dom'
-import NavBar from './components/NavBar.jsx'
-import Footer from './components/Footer.jsx'
-import RoutesIndex from './routes/RoutesIndex'
-import './styles/styles.css'
+import NavBar from '@/components/NavBar.jsx'
+import Footer from '@/components/Footer.jsx'
+import RoutesIndex from '@/routes/RoutesIndex'
+import '@/styles/styles.css'
 
 const App = () => {
   return (
