@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const ProductCardHome = ({ image, name, price, productId }) => {
   return (
     <div className='col'>
-      <div className='card h-100'>
+      <div className='card h-100 card-dark'>
         <img src={image} className='card-img-top object-fit-cover' alt={name} />
         <div className='card-body d-flex flex-column'>
           <h5 className='card-title text-center'>{name}</h5>

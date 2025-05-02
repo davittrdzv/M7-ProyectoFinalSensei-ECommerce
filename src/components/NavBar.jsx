@@ -3,7 +3,7 @@ import SearchBar from '../components/SearchBar.jsx'
 
 const NavBar = () => {
   return (
-    <nav className='navbar navbar-expand-lg fixed-top border-bottom border-primary'>
+    <nav className='navbar navbar-expand-lg fixed-top border-bottom border-primary navbar-custom'>
       <div className='container-fluid'>
         <span className='navbar-brand'>DRV E-COMMERCE</span>
         <button
