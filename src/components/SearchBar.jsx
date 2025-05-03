@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import { useProductContext } from '@/hooks/useProductContext'
 import { useState } from 'react'
 
 const SearchBar = () => {
   const [search, setSearch] = useState('')
   const { products, setFilteredProducts } = useProductContext()
+  const navigate = useNavigate()
 
   const handleSearch = () => {
     const searchedProduct = products.filter(product => {
@@ -11,6 +13,7 @@ const SearchBar = () => {
     })
     setFilteredProducts(searchedProduct)
     setSearch('')
+    navigate('/') // redirige a Home después de actualizar el estado
   }
 
   return (
