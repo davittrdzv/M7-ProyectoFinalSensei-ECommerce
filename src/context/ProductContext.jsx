@@ -7,6 +7,7 @@ const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProducts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [searchTerm, setSearchTerm] = useState('')
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -25,7 +26,7 @@ const ProductProvider = ({ children }) => {
   }, [])
 
   const data = {
-    products, filteredProducts, setFilteredProducts, loading
+    products, filteredProducts, setFilteredProducts, loading, searchTerm, setSearchTerm
   }
 
   return (
