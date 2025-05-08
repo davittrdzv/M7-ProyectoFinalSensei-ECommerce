@@ -19,22 +19,26 @@ body {
   color: var(--text-light) !important;
 }
 
-.navbar-custom .navbar-brand,
+.navbar-custom,
 .navbar-custom .nav-link {
   color: var(--text-light) !important;
-}
+} /*Checar esta y la siguiente creo que ha contradicción o alguna ya ni sirve */
 
 .navbar-custom .nav-link:hover,
 .navbar-custom .nav-link.active {
-  color: #FFD700 !important; /* o cualquier color de resaltado */
-}
+  color: #FFD700 !important; 
+} /*Checar esta y la anterior creo que ha contradicción o alguna ya ni sirve */
+
+.navbar-brand {
+  color: #FFD700 !important; 
+} /*Checar esta y la anterior creo que ha contradicción o alguna ya ni sirve */
 
 .mt-3_5rem {
     margin-top: 3.5rem !important; /* A la par de NavBar */
 }
 
 .mt-4_0rem {
-    margin-top: 4rem !important; /* Un poco más abajo de NavBar */
+    margin-top: 4.4rem !important; /* Un poco más abajo de NavBar */
 }
 
 .text-justify {
@@ -61,4 +65,30 @@ body {
   min-height: 8rem;
   overflow: hidden;
   -overflow: ellipsis;
+}
+
+.custom-img {
+  width: 50px;
+  margin-right: 1rem;
+}
+
+.btn-custom-dark {
+  color: var(--text-light);
+  border-color: var(--text-light);
+}
+
+.btn-custom-dark:hover {
+  color: #FFD700;
+  border-color: #FFD700;
+}
+
+.btn-custom-gold {
+  background-color: #FFD700;
+  color: black;
+  transition: background-color 0.2s ease;
+}
+
+.btn-custom-gold:hover {
+  background-color: #e6c200;
+  color: black;
 }

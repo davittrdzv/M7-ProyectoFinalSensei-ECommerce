@@ -17,7 +17,7 @@ const ProductCardDetails = ({ image, name, description, price, category, brand, 
             <p className='card-text text-justify'>{description}</p>
             <h5 className='card-text text-justify'><strong>{isActive ? 'Available' : 'Unavailable'}</strong></h5>
             <div className='container'>
-              <Link to='/about' className={`btn ${isActive ? 'btn-primary' : 'btn-secondary disabled'}`}>Add to Cart</Link>
+              <Link to='/about' className={`btn ${isActive ? 'btn-custom-gold' : 'btn-custom-gold disabled'}`}>Add to Cart</Link>
             </div>
           </div>
         </div>

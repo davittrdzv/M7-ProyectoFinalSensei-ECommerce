@@ -10,8 +10,8 @@ const ProductCardHome = ({ image, name, price, productId }) => {
           <h6 className='card-text text-center'>{price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
           </h6>
           <div className='d-flex justify-content-around gap-2'>
-            <Link to={`/productdetails/${productId}`} className='btn btn-primary w-100'>Details</Link>
-            <Link to='/about' className='btn btn-secondary w-100'>Add to Cart</Link>
+            <Link to={`/productdetails/${productId}`} className='btn btn-custom-dark w-100'>Details</Link>
+            <Link to='/about' className='btn btn-custom-gold w-100'>Add to Cart</Link>
           </div>
         </div>
       </div>
