@@ -27,7 +27,7 @@ const SearchBar = () => {
           data-bs-toggle='dropdown'
           aria-expanded='false'
         >
-          Category
+          Search by Category
         </button>
         <ul className='dropdown-menu'>
           <li><a className='dropdown-item' href='#'>All categories</a></li>

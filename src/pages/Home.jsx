@@ -7,7 +7,6 @@ const Home = () => {
   return (
     <div className='container border-top border-danger mt-4_0rem'> {/* border-top border-danger son para referencia */}
       <h1 className='text-center'>Home</h1>
-
       {loading
         ? (
           <h1 className='text-center'>Loading...</h1>

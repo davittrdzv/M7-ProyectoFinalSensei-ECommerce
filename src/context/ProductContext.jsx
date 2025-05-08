@@ -8,6 +8,7 @@ const ProductProvider = ({ children }) => {
   const [filteredProducts, setFilteredProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [searchTerm, setSearchTerm] = useState('')
+  const [categories, setCategories] = useState([])
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -15,6 +16,8 @@ const ProductProvider = ({ children }) => {
         const response = await axios.get('https://ecommerce-json-jwt.onrender.com/items')
         setProducts(response.data)
         setFilteredProducts(response.data)
+        const uniqueCategories = [...new Set(response.data.map(product => product.category))].sort()
+        setCategories(uniqueCategories)
       } catch (error) {
         console.error('Error fetching products:', error)
       } finally {
@@ -26,7 +29,7 @@ const ProductProvider = ({ children }) => {
   }, [])
 
   const data = {
-    products, filteredProducts, setFilteredProducts, loading, searchTerm, setSearchTerm
+    products, filteredProducts, setFilteredProducts, loading, searchTerm, setSearchTerm, categories
   }
 
   return (
