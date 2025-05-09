@@ -48,7 +48,7 @@ const SignUp = () => {
               name='first_name'
               {...register('first_name', { required: true })}
             /><label htmlFor='first_name'>First Name</label>
-            <p className='text-center mb-0'>{errors.first_name?.message}</p>
+            <p className='text-center error-msg mb-0'>{errors.first_name?.message}</p>
           </div>
           <div className='form-floating'>
             <input
@@ -59,7 +59,7 @@ const SignUp = () => {
               name='last_name'
               {...register('last_name', { required: true })}
             /><label htmlFor='last_name'>Last Name</label>
-            <p className='text-center mb-0'>{errors.last_name?.message}</p>
+            <p className='text-center error-msg mb-0'>{errors.last_name?.message}</p>
           </div>
           <div className='form-floating'>
             <select
@@ -74,7 +74,7 @@ const SignUp = () => {
               <option value='F'>Female</option>
             </select>
             <label htmlFor='gender'>Gender</label>
-            <p className='text-center mb-0'>{errors.gender?.message}</p>
+            <p className='text-center error-msg mb-0'>{errors.gender?.message}</p>
           </div>
           <div className='form-floating'>
             <input
@@ -85,7 +85,7 @@ const SignUp = () => {
               name='email'
               {...register('email', { required: true })}
             /><label htmlFor='email'>E-Mail</label>
-            <p className='text-center mb-0'>{errors.email?.message}</p>
+            <p className='text-center error-msg mb-0'>{errors.email?.message}</p>
           </div>
           <div className='form-floating'>
             <input
@@ -96,7 +96,7 @@ const SignUp = () => {
               name='password'
               {...register('password', { required: true })}
             /><label htmlFor='password'>Password</label>
-            <p className='text-center mb-0'>{errors.password?.message}</p>
+            <p className='text-center error-msg mb-0'>{errors.password?.message}</p>
           </div>
           <button
             className='btn btn-custom-gold w-100 py-2'
