@@ -1,8 +1,34 @@
 import '@/styles/form.css'
 import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
+const schema = yup.object({
+  first_name: yup
+    .string()
+    .required('First Name is required')
+    .matches(/^[A-Za-z\s]+$/, 'Only letters are accepted'),
+  last_name: yup
+    .string()
+    .required('Last Name is required'),
+  gender: yup
+    .string()
+    .required('Gender is required'),
+  email: yup
+    .string()
+    .email('Invalid E-mail')
+    .required('E-Mail is required'),
+  password: yup
+    .string()
+    .required('Password is required')
+    .min(8, 'Password is too short - should be 8 characters minimum.')
+    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%.^&*])/, 'The password must have at least 8 characters, one number, one uppercase letter, one lowercase letter and one special character'),
+}).required()
 
 const SignUp = () => {
-  const { register, handleSubmit, formState: { errors }, reset } = useForm()
+  const { register, handleSubmit, formState: { errors }, reset } = useForm({
+    resolver: yupResolver(schema)
+  })
   const onSubmit = data => {
     console.log(data)
     reset()
@@ -22,7 +48,7 @@ const SignUp = () => {
               name='first_name'
               {...register('first_name', { required: true })}
             /><label htmlFor='first_name'>First Name</label>
-            {errors.first_name && <p className='text-center mb-0'>This field is required</p>}
+            <p className='text-center mb-0'>{errors.first_name?.message}</p>
           </div>
           <div className='form-floating'>
             <input
@@ -33,7 +59,7 @@ const SignUp = () => {
               name='last_name'
               {...register('last_name', { required: true })}
             /><label htmlFor='last_name'>Last Name</label>
-            {errors.last_name && <p className='text-center mb-0'>This field is required</p>}
+            <p className='text-center mb-0'>{errors.last_name?.message}</p>
           </div>
           <div className='form-floating'>
             <select
@@ -41,14 +67,14 @@ const SignUp = () => {
               id='gender'
               name='gender'
               defaultValue=''
-                            {...register('gender', { required: true })}
+              {...register('gender', { required: true })}
             >
               <option value='' disabled>Select your Gender</option> {/* No se regresa a este cuando hago refresh */}
               <option value='M'>Male</option>
               <option value='F'>Female</option>
             </select>
             <label htmlFor='gender'>Gender</label>
-            {errors.gender && <p className='text-center mb-0'>This field is required</p>}
+            <p className='text-center mb-0'>{errors.gender?.message}</p>
           </div>
           <div className='form-floating'>
             <input
@@ -59,7 +85,7 @@ const SignUp = () => {
               name='email'
               {...register('email', { required: true })}
             /><label htmlFor='email'>E-Mail</label>
-            {errors.email && <p className='text-center mb-0'>This field is required</p>}
+            <p className='text-center mb-0'>{errors.email?.message}</p>
           </div>
           <div className='form-floating'>
             <input
@@ -70,7 +96,7 @@ const SignUp = () => {
               name='password'
               {...register('password', { required: true })}
             /><label htmlFor='password'>Password</label>
-            {errors.email && <p className='text-center mb-0'>This field is required</p>}
+            <p className='text-center mb-0'>{errors.password?.message}</p>
           </div>
           <button
             className='btn btn-custom-gold w-100 py-2'
