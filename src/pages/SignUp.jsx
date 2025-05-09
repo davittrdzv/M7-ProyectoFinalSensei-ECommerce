@@ -2,6 +2,7 @@ import '@/styles/form.css'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import { registerUserService } from '@/services/userService'
 
 const schema = yup.object({
   first_name: yup
@@ -10,7 +11,8 @@ const schema = yup.object({
     .matches(/^[A-Za-z\s]+$/, 'Only letters are accepted'),
   last_name: yup
     .string()
-    .required('Last Name is required'),
+    .required('Last Name is required')
+    .matches(/^[A-Za-z\s]+$/, 'Only letters are accepted'),
   gender: yup
     .string()
     .required('Gender is required'),
@@ -29,9 +31,18 @@ const SignUp = () => {
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(schema)
   })
-  const onSubmit = data => {
-    console.log(data)
-    reset()
+
+  const onSubmit = async (data) => {
+    try {
+      const { status } = await registerUserService(data)
+      if (status === 201) {
+        console.log('User registered successfully')
+        console.log(data)
+        reset()
+      }
+    } catch (error) {
+      console.error('Error registering user:', error)
+    }
   }
 
   return (
