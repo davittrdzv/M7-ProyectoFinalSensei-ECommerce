@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { registerUserService } from '@/services/userService'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const schema = yup.object({
   first_name: yup
@@ -28,6 +30,8 @@ const schema = yup.object({
 }).required()
 
 const SignUp = () => {
+  const signUpSuccess = withReactContent(Swal)
+
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(schema)
   })
@@ -39,6 +43,17 @@ const SignUp = () => {
         console.log('User registered successfully')
         console.log(data)
         reset()
+        signUpSuccess.fire({
+          title: 'User registered successfully!',
+          icon: 'success',
+          draggable: false,
+          confirmButtonColor: '#FFD700',
+          background: 'black',
+          color: '#ffffff',
+          customClass: {
+            confirmButton: 'btn-swal-ok'
+          }
+        })
       }
     } catch (error) {
       console.error('Error registering user:', error)

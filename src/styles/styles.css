@@ -92,3 +92,7 @@ body {
   background-color: #e6c200;
   color: black;
 }
+
+.btn-swal-ok {
+  color: black !important;
+}
