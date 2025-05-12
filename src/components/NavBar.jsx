@@ -45,6 +45,22 @@ const NavBar = () => {
                 <>
                   <NavLink
                     className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                    to='/login'
+                    onClick={
+                    () => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' })
+                      logout()
+                    }
+                  }
+                  >
+                    Log Out
+                  </NavLink>
+                </>
+                )
+              : (
+                <>
+                  <NavLink
+                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                     onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                     to='/login'
                   >
@@ -58,22 +74,7 @@ const NavBar = () => {
                     Sign up
                   </NavLink>
                 </>
-                )
-              : (
-                <NavLink
-                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                  to='/'
-                  onClick={
-                    () => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' })
-                      logout()
-                    }
-                  }
-                >
-                  Log Out
-                </NavLink>
                 )}
-
           </div>
         </div>
       </div>
