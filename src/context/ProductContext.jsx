@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from 'react'
-import axios from 'axios'
+import { getAllItemsService } from '@/services/productServices'
 
 const ProductContext = createContext()
 
@@ -13,7 +13,7 @@ const ProductProvider = ({ children }) => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('https://ecommerce-json-jwt.onrender.com/items')
+        const response = await getAllItemsService()
         setProducts(response.data)
         setFilteredProducts(response.data)
         const uniqueCategories = [...new Set(response.data.map(product => product.category))].sort()

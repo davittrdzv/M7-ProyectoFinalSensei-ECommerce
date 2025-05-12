@@ -2,7 +2,7 @@ import '@/styles/form.css'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { registerUserService } from '@/services/userService'
+import { registerUserService } from '@/services/userServices'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 

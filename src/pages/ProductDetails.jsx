@@ -1,32 +1,48 @@
+import { useEffect, useState } from 'react'
 import { useParams, Navigate } from 'react-router-dom'
 import ProductCardDetails from '@/components/ProductCardDetails.jsx'
-import { useProductContext } from '@/hooks/useProductContext'
+import { getItemService } from '@/services/productServices'
 
 const ProductDetails = () => {
   const { productId } = useParams()
-  const { products, loading } = useProductContext()
-  const currentProduct = products.find(product => product.id === productId)
+  const [loading, setLoading] = useState(true)
+  const [product, setProduct] = useState(null)
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await getItemService(productId)
+        setProduct(response.data)
+      } catch (error) {
+        console.error('Error fetching product:', error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    fetchProduct()
+  }, [productId])
 
   return (
-    loading
-      ? <h1>Loading...</h1>
-      : currentProduct
-        ? (
-          <div className='container text-center border-top border-danger mt-4_0rem'>
-            <h1>Product Details</h1>
-            <ProductCardDetails
-              image={currentProduct.image || currentProduct.images || 'https://picsum.photos/200'}
-              name={currentProduct.product_name}
-              description={currentProduct.description}
-              sku={currentProduct.sku}
-              category={currentProduct.category}
-              isActive={currentProduct.isActive}
-              brand={currentProduct.brand}
-              price={currentProduct.price}
-            />
-          </div>
-          )
-        : <Navigate to='/not-found' replace />
+    <div className='container border-top border-danger mt-4_0rem'> {/* border-top border-danger son para referencia */}
+      <h1 className='text-center'>Product Details</h1>
+      {loading
+        ? <h1 className='text-center'>Loading...</h1>
+        : product
+          ? (
+            <div className='container text-center'>
+              <ProductCardDetails
+                image={product.image || product.images || 'https://picsum.photos/200'}
+                name={product.product_name}
+                description={product.description}
+                sku={product.sku}
+                category={product.category}
+                isActive={product.isActive}
+                brand={product.brand}
+                price={product.price}
+              />
+            </div>
+            )
+          : <Navigate to='/not-found' replace />}
+    </div>
   )
 }
 
