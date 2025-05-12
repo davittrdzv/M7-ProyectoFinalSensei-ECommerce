@@ -1,10 +1,11 @@
 import '@/styles/form.css'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { registerUserService } from '@/services/userServices'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import { signUpUserService } from '@/services/userServices'
+import { useNavigate } from 'react-router-dom'
 
 const schema = yup.object({
   first_name: yup
@@ -30,6 +31,7 @@ const schema = yup.object({
 }).required()
 
 const SignUp = () => {
+  const navigate = useNavigate()
   const signUpSuccess = withReactContent(Swal)
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
@@ -38,7 +40,7 @@ const SignUp = () => {
 
   const onSubmit = async (data) => {
     try {
-      const { status } = await registerUserService(data)
+      const { status } = await signUpUserService(data)
       if (status === 201) {
         console.log('User registered successfully')
         console.log(data)
@@ -54,6 +56,7 @@ const SignUp = () => {
             confirmButton: 'btn-swal-ok'
           }
         })
+        navigate('/login')
       }
     } catch (error) {
       console.error('Error registering user:', error)
