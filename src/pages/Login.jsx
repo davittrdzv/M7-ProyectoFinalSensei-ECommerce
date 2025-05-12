@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { logInUserService } from '@/services/userServices'
+import { useAuthContext } from '@/hooks/useAuthContext'
 
 const schema = yup.object({
   email: yup
@@ -18,6 +19,7 @@ const schema = yup.object({
 }).required()
 
 const Login = () => {
+  const { login } = useAuthContext()
   const navigate = useNavigate()
   const logInSuccess = withReactContent(Swal)
 
@@ -29,8 +31,7 @@ const Login = () => {
     try {
       const { status, data } = await logInUserService(formData)
       if (status === 200) {
-        console.log('Login successful')
-        console.log(data)
+        login(data.token)
         reset()
         logInSuccess.fire({
           title: 'Login successful!',
