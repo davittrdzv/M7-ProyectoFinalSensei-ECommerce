@@ -1,8 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import SearchBar from '@/components/SearchBar.jsx'
 import mePic from '@/assets/mePic.png'
+import { useAuthContext } from '@/hooks/useAuthContext'
 
 const NavBar = () => {
+  const { isAuthenticated, logout } = useAuthContext()
   return (
     <nav className='navbar navbar-expand-lg fixed-top border-bottom border-primary navbar-custom'>
       <div className='container-fluid'>
@@ -38,20 +40,40 @@ const NavBar = () => {
             </NavLink>
             <SearchBar />
             <span>Hi, Guest!</span> {/** Aquí hay que poner el nombre del usuario, cuando esté funcional/ */}
-            <NavLink
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              to='/login'
-            >
-              Log in
-            </NavLink>
-            <NavLink
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              to='/signup'
-            >
-              Sign up
-            </NavLink>
+            {isAuthenticated
+              ? (
+                <>
+                  <NavLink
+                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    to='/login'
+                  >
+                    Log in
+                  </NavLink>
+                  <NavLink
+                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    to='/signup'
+                  >
+                    Sign up
+                  </NavLink>
+                </>
+                )
+              : (
+                <NavLink
+                  className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                  to='/'
+                  onClick={
+                    () => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' })
+                      logout()
+                    }
+                  }
+                >
+                  Log Out
+                </NavLink>
+                )}
+
           </div>
         </div>
       </div>
