@@ -31,10 +31,10 @@ const Login = () => {
     try {
       const { status, data } = await logInUserService(formData)
       if (status === 200) {
-        login(data.token)
+        const userLogged = await login(data.token)
         reset()
         logInSuccess.fire({
-          title: 'Login successful!',
+          title: `Welcome ${userLogged.first_name} ${userLogged.last_name}!`,
           icon: 'success',
           draggable: false,
           confirmButtonColor: '#FFD700',

@@ -4,7 +4,7 @@ import mePic from '@/assets/mePic.png'
 import { useAuthContext } from '@/hooks/useAuthContext'
 
 const NavBar = () => {
-  const { isAuthenticated, logout } = useAuthContext()
+  const { isAuthenticated, logout, user } = useAuthContext()
   return (
     <nav className='navbar navbar-expand-lg fixed-top border-bottom border-primary navbar-custom'>
       <div className='container-fluid'>
@@ -39,7 +39,15 @@ const NavBar = () => {
               About
             </NavLink>
             <SearchBar />
-            <span>Hi, Guest!</span> {/** Aquí hay que poner el nombre del usuario, cuando esté funcional/ */}
+            <span>
+              {user
+                ? (
+                `Hi, ${user?.first_name} ${user?.last_name}!`
+                  )
+                : (
+                    'Hi, Guest!'
+                  )}
+            </span>
             {isAuthenticated
               ? (
                 <>

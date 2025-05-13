@@ -6,4 +6,10 @@ const signUpUserService = (data) => axios.post(`${BASE_URL}/register`, data)
 
 const logInUserService = (data) => axios.post(`${BASE_URL}/login`, data)
 
-export { signUpUserService, logInUserService }
+const getMeUserService = (token) => axios.get(`${BASE_URL}/users/me`, {
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+})
+
+export { signUpUserService, logInUserService, getMeUserService }
