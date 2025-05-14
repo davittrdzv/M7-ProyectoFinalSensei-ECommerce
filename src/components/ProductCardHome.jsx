@@ -1,17 +1,44 @@
 import { Link } from 'react-router-dom'
+import { Tooltip } from 'bootstrap'
+import { useAuthContext } from '@/hooks/useAuthContext'
+import { useEffect } from 'react'
 
 const ProductCardHome = ({ image, name, price, productId }) => {
+  const { isAuthenticated, loading } = useAuthContext()
+
+  useEffect(() => {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    // eslint-disable-next-line no-unused-vars
+    const tooltipList = [...tooltipTriggerList].map(
+      (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
+    )
+  }, [])
+
+  if (loading) return null
+
+  const tooltipAttrs = !isAuthenticated
+    ? {
+        'data-bs-toggle': 'tooltip',
+        'data-bs-placement': 'top',
+        title: 'You must log in to add an item to your cart',
+      }
+    : {}
+
   return (
     <div className='col'>
       <div className='card h-100 card-dark'>
         <img src={image} className='card-img-top object-fit-cover' alt={name} />
         <div className='card-body d-flex flex-column'>
           <h5 className='card-title text-center'>{name}</h5>
-          <h6 className='card-text text-center'>{price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
-          </h6>
+          <h6 className='card-text text-center'>{price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h6>
           <div className='d-flex justify-content-around gap-2'>
             <Link to={`/productdetails/${productId}`} className='btn btn-custom-dark w-100'>Details</Link>
-            <Link to='/about' className='btn btn-custom-gold w-100'>Add to Cart</Link>
+            <button
+              className={`btn btn-custom-gold w-100 ${!isAuthenticated ? 'disabled' : ''}`}
+              {...tooltipAttrs}
+            >
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>

@@ -96,3 +96,7 @@ body {
 .btn-swal-ok {
   color: black !important;
 }
+
+.btn.disabled[data-bs-toggle="tooltip"] {
+  pointer-events: auto;
+}

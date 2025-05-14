@@ -1,6 +1,28 @@
 import { Link } from 'react-router-dom'
+import { Tooltip } from 'bootstrap'
+import { useAuthContext } from '@/hooks/useAuthContext'
+import { useEffect } from 'react'
 
 const ProductCardDetails = ({ image, name, description, price, category, brand, sku, isActive }) => {
+  const { isAuthenticated, loading } = useAuthContext()
+
+  useEffect(() => {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    // eslint-disable-next-line no-unused-vars
+    const tooltipList = [...tooltipTriggerList].map(
+      (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
+    )
+  }, [])
+
+  if (loading) return null
+
+  const tooltipAttrs = !isAuthenticated
+    ? {
+        'data-bs-toggle': 'tooltip',
+        'data-bs-placement': 'top',
+        title: 'You must log in to add an item to your cart',
+      }
+    : {}
   return (
     <div className='card mb-3 card-dark'>
       <div className='row g-0'>
@@ -17,7 +39,12 @@ const ProductCardDetails = ({ image, name, description, price, category, brand, 
             <p className='card-text text-justify'>{description}</p>
             <h5 className='card-text text-justify'><strong>{isActive ? 'Available' : 'Unavailable'}</strong></h5>
             <div className='container'>
-              <Link to='/about' className={`btn ${isActive ? 'btn-custom-gold' : 'btn-custom-gold disabled'}`}>Add to Cart</Link>
+              <button
+                className={`btn btn-custom-gold ${!isAuthenticated ? 'disabled' : ''}`}
+                {...tooltipAttrs}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>

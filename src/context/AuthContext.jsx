@@ -3,8 +3,9 @@ import { jwtDecode } from 'jwt-decode'
 import { getMeUserService } from '@/services/userServices'
 
 const AuthContext = createContext()
-// Checar uso de promesa para lo de sweet alert
+
 const AuthProvider = ({ children }) => {
+  const [loading, setLoading] = useState(true)
   const [token, setToken] = useState(localStorage.getItem('token') || null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [userPayload, setUserPayload] = useState(null)
@@ -50,6 +51,8 @@ const AuthProvider = ({ children }) => {
         }
       } catch (error) {
         console.error('Error fetching user data:', error)
+      } finally {
+        setLoading(false)
       }
     }
     if (token) {
@@ -57,6 +60,8 @@ const AuthProvider = ({ children }) => {
       setUserPayload(payload)
       setIsAuthenticated(true)
       fetchUser()
+    } else {
+      setLoading(false)
     }
   }, [token])
 
@@ -66,6 +71,7 @@ const AuthProvider = ({ children }) => {
     user,
     login,
     logout,
+    loading,
   }
 
   return (
