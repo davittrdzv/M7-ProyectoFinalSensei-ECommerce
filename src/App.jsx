@@ -4,7 +4,6 @@ import { AuthProvider } from '@/context/AuthContext.jsx'
 import NavBar from '@/components/NavBar.jsx'
 import Footer from '@/components/Footer.jsx'
 import RoutesIndex from '@/routes/RoutesIndex'
-import '@/styles/styles.css'
 
 const App = () => {
   return (

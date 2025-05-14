@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { Tooltip } from 'bootstrap'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import { useEffect } from 'react'
@@ -14,8 +13,6 @@ const ProductCardDetails = ({ image, name, description, price, category, brand, 
     )
   }, [])
 
-  if (loading) return null
-
   const tooltipAttrs = !isAuthenticated
     ? {
         'data-bs-toggle': 'tooltip',
@@ -23,6 +20,9 @@ const ProductCardDetails = ({ image, name, description, price, category, brand, 
         title: 'You must log in to add an item to your cart',
       }
     : {}
+
+  if (loading) return null
+
   return (
     <div className='card mb-3 card-dark'>
       <div className='row g-0'>

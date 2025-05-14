@@ -14,8 +14,6 @@ const ProductCardHome = ({ image, name, price, productId }) => {
     )
   }, [])
 
-  if (loading) return null
-
   const tooltipAttrs = !isAuthenticated
     ? {
         'data-bs-toggle': 'tooltip',
@@ -23,6 +21,8 @@ const ProductCardHome = ({ image, name, price, productId }) => {
         title: 'You must log in to add an item to your cart',
       }
     : {}
+
+  if (loading) return null
 
   return (
     <div className='col'>
