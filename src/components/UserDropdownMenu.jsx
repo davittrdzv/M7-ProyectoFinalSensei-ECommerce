@@ -29,8 +29,14 @@ const UserDropDownMenu = () => {
           <Link className='dropdown-item' to='/userprofile'>My Profile</Link>
         </li>
         <li>
-          <Link className='dropdown-item' to='/'>My Shopping Cart</Link>
+          <Link className='dropdown-item' to='/shoppingcart'>My Shopping Cart</Link>
         </li>
+        {user?.role === 'ADMIN' &&
+          (
+            <li>
+              <Link className='dropdown-item' to='/addproducts'>Add New Products</Link>
+            </li>
+          )}
         <li><hr className='dropdown-divider' /></li>
         <li>
           <Link
