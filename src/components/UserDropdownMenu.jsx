@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom'
 import { useAuthContext } from '@/hooks/useAuthContext'
 
 const UserDropDownMenu = () => {
-  const { logout } = useAuthContext()
+  const { logout, user } = useAuthContext()
+
   return (
     <div className='dropdown text-end position-relative p-4'>
       <Link
@@ -21,7 +22,11 @@ const UserDropDownMenu = () => {
       </Link>
       <ul className='dropdown-menu text-small'>
         <li>
-          <Link className='dropdown-item' to='/'>My Profile</Link>
+          <span className='dropdown-item'>{`${user?.first_name} ${user?.last_name}`}</span>
+        </li>
+        <li><hr className='dropdown-divider' /></li>
+        <li>
+          <Link className='dropdown-item' to='/userprofile'>My Profile</Link>
         </li>
         <li>
           <Link className='dropdown-item' to='/'>My Shopping Cart</Link>

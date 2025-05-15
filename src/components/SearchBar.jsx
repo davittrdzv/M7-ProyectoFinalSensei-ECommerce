@@ -22,7 +22,7 @@ const SearchBar = () => {
     <form onSubmit={handleSearch}>
       <div className='input-group mb-3'>
         <button
-          className='btn btn-outline-secondary dropdown-toggle'
+          className='btn btn-outline-secondary dropdown-toggle btn-custom-gold'
           type='button'
           data-bs-toggle='dropdown'
           aria-expanded='false'
@@ -45,7 +45,7 @@ const SearchBar = () => {
           onChange={(event) => setSearch(event.target.value)}
         />
         <button
-          className='btn btn-outline-secondary'
+          className='btn btn-custom-dark'
           type='submit'
         >
           <svg

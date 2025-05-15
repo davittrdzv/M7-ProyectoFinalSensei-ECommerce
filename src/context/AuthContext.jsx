@@ -7,7 +7,10 @@ const AuthContext = createContext()
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
   const [token, setToken] = useState(localStorage.getItem('token') || null)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    const storedAuth = localStorage.getItem('isAuthenticated')
+    return storedAuth ? JSON.parse(storedAuth) : false
+  })
   const [userPayload, setUserPayload] = useState(null)
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem('user')
@@ -20,6 +23,7 @@ const AuthProvider = ({ children }) => {
     const payload = jwtDecode(token)
     setUserPayload(payload)
     setIsAuthenticated(true)
+    localStorage.setItem('isAuthenticated', true)
     try {
       const { status, data } = await getMeUserService(token)
       if (status === 200) {
@@ -39,6 +43,7 @@ const AuthProvider = ({ children }) => {
     setToken(null)
     setUserPayload(null)
     setIsAuthenticated(false)
+    localStorage.removeItem('isAuthenticated')
     setUser(null)
   }
 
