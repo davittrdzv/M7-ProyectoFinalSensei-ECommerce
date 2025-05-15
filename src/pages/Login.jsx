@@ -59,7 +59,7 @@ const Login = () => {
           <div className='form-floating'>
             <input
               type='email'
-              className='form-control email-login'
+              className='form-control formElementFirst'
               placeholder='E-Mail'
               id='email'
               name='email'
@@ -70,7 +70,7 @@ const Login = () => {
           <div className='form-floating'>
             <input
               type='password'
-              className='form-control'
+              className='form-control formElementLast'
               placeholder='Password'
               id='password'
               name='password'

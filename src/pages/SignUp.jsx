@@ -71,7 +71,7 @@ const SignUp = () => {
           <div className='form-floating'>
             <input
               type='text'
-              className='form-control'
+              className='form-control formElementFirst'
               placeholder='First Name'
               id='first_name'
               name='first_name'
@@ -82,7 +82,7 @@ const SignUp = () => {
           <div className='form-floating'>
             <input
               type='text'
-              className='form-control'
+              className='form-control formElementBetween'
               placeholder='Last Name'
               id='last_name'
               name='last_name'
@@ -92,13 +92,13 @@ const SignUp = () => {
           </div>
           <div className='form-floating'>
             <select
-              className='form-select'
+              className='form-select formElementBetween'
               id='gender'
               name='gender'
               defaultValue=''
               {...register('gender', { required: true })}
             >
-              <option value='' disabled>Select your Gender</option> {/* No se regresa a este cuando hago refresh */}
+              <option value='' disabled>Select your Gender</option>
               <option value='M'>Male</option>
               <option value='F'>Female</option>
             </select>
@@ -108,7 +108,7 @@ const SignUp = () => {
           <div className='form-floating'>
             <input
               type='email'
-              className='form-control email-signup'
+              className='form-control formElementBetween'
               placeholder='E-Mail'
               id='email'
               name='email'
@@ -119,7 +119,7 @@ const SignUp = () => {
           <div className='form-floating'>
             <input
               type='password'
-              className='form-control'
+              className='form-control formElementLast'
               placeholder='Password'
               id='password'
               name='password'

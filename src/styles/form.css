@@ -12,13 +12,13 @@ body {
   z-index: 2;
 }
 
-.form-signin input[id="first_name"], .email-login {
+.formElementFirst {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.form-signin input[id="last_name"], .form-signin select, .email-signup {
+.formElementBetween {
   margin-bottom: -1px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -26,7 +26,7 @@ body {
   border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+.formElementLast {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
