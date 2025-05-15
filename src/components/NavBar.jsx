@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom'
 import SearchBar from '@/components/SearchBar.jsx'
+import UserDropDownMenu from '@/components/UserDropDownMenu.jsx'
 import mePic from '@/assets/mePic.png'
 import { useAuthContext } from '@/hooks/useAuthContext'
 
 const NavBar = () => {
-  const { isAuthenticated, logout, user } = useAuthContext()
+  const { isAuthenticated, user } = useAuthContext()
   return (
     <nav className='navbar navbar-expand-lg fixed-top border-bottom border-primary navbar-custom'>
       <div className='container-fluid'>
@@ -50,20 +51,7 @@ const NavBar = () => {
             </span>
             {isAuthenticated
               ? (
-                <>
-                  <NavLink
-                    className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                    to='/login'
-                    onClick={
-                    () => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' })
-                      logout()
-                    }
-                  }
-                  >
-                    Log Out
-                  </NavLink>
-                </>
+                <UserDropDownMenu />
                 )
               : (
                 <>

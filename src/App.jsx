@@ -1,3 +1,4 @@
+import '@/styles/styles.css'
 import { BrowserRouter } from 'react-router-dom'
 import { ProductProvider } from '@/context/ProductContext.jsx'
 import { AuthProvider } from '@/context/AuthContext.jsx'
