@@ -19,7 +19,7 @@ const Home = () => {
             <div className='row row-cols-1 row-cols-md-4 g-4'> {/* Este div es solo para mostrar los productos */}
               {filteredProducts.map(product => (
                 <ProductCardHome
-                  image={product.image || product.images || 'https://picsum.photos/200'} /* La tercer imagen es por el momento como alternativa mientras construyo la página */
+                  image={product.image || product.images}
                   key={product.id}
                   name={product.product_name}
                   price={product.price}

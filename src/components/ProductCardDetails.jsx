@@ -4,6 +4,10 @@ import { useEffect } from 'react'
 
 const ProductCardDetails = ({ image, name, description, price, category, brand, sku, isActive }) => {
   const { isAuthenticated, loading } = useAuthContext()
+  const placeholderPic = 'https://picsum.photos/200'
+  const handlePicError = (e) => {
+    e.target.src = placeholderPic
+  }
 
   useEffect(() => {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -27,7 +31,12 @@ const ProductCardDetails = ({ image, name, description, price, category, brand, 
     <div className='card mb-3 card-dark'>
       <div className='row g-0'>
         <div className='col-md-4'>
-          <img src={image} className='img-fluid rounded-start' alt={name} />
+          <img
+            src={image || placeholderPic}
+            className='img-fluid rounded-start'
+            alt={name}
+            onError={handlePicError}
+          />
         </div>
         <div className='col-md-8'>
           <div className='card-body'>
@@ -35,7 +44,11 @@ const ProductCardDetails = ({ image, name, description, price, category, brand, 
             <p className='card-text text-justify'><small><strong>SKU: {sku}</strong></small></p>
             <p className='card-text text-justify'><small><strong>Department: {category}</strong></small></p>
             <p className='card-text text-justify'><small><strong>Brand: {brand}</strong></small></p>
-            <h4 className='card-text text-justify'><strong>Price: {price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</strong></h4>
+            <h4 className='card-text text-justify'>
+              <strong>
+                Price: {price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+              </strong>
+            </h4>
             <p className='card-text text-justify'>{description}</p>
             <h5 className='card-text text-justify'><strong>{isActive ? 'Available' : 'Unavailable'}</strong></h5>
             <div className='container'>
