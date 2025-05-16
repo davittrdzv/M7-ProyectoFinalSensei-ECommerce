@@ -77,6 +77,7 @@ const AuthProvider = ({ children }) => {
     login,
     logout,
     loading,
+    token,
   }
 
   return (

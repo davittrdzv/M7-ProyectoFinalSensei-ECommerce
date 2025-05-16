@@ -6,4 +6,10 @@ const getAllItemsService = () => axios.get(`${BASE_URL}/items`)
 
 const getItemService = (id) => axios.get(`${BASE_URL}/items/${id}`)
 
-export { getAllItemsService, getItemService }
+const addItemService = (data, token) => axios.post(`${BASE_URL}/items`, data, {
+  headers: {
+    AUTHORIZATION: `Bearer ${token}`
+  }
+})
+
+export { getAllItemsService, getItemService, addItemService }

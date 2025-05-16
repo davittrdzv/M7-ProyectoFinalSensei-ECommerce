@@ -10,26 +10,33 @@ const ProductProvider = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('')
   const [categories, setCategories] = useState([])
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await getAllItemsService()
-        setProducts(response.data)
-        setFilteredProducts(response.data)
-        const uniqueCategories = [...new Set(response.data.map(product => product.category))].sort()
-        setCategories(uniqueCategories)
-      } catch (error) {
-        console.error('Error fetching products:', error)
-      } finally {
-        setLoading(false)
-      }
+  const fetchProducts = async () => {
+    try {
+      const response = await getAllItemsService()
+      setProducts(response.data)
+      setFilteredProducts(response.data)
+      const uniqueCategories = [...new Set(response.data.map(product => product.category))].sort()
+      setCategories(uniqueCategories)
+    } catch (error) {
+      console.error('Error fetching products:', error)
+    } finally {
+      setLoading(false)
     }
+  }
 
+  useEffect(() => {
     fetchProducts()
   }, [])
 
   const data = {
-    products, filteredProducts, setFilteredProducts, loading, searchTerm, setSearchTerm, categories
+    products,
+    filteredProducts,
+    setFilteredProducts,
+    loading,
+    searchTerm,
+    setSearchTerm,
+    categories,
+    fetchProducts
   }
 
   return (

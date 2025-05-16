@@ -42,8 +42,6 @@ const SignUp = () => {
     try {
       const { status } = await signUpUserService(data)
       if (status === 201) {
-        console.log('User registered successfully')
-        console.log(data)
         reset()
         signUpSuccess.fire({
           title: 'User registered successfully!',

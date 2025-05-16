@@ -20,7 +20,7 @@ const Home = () => {
               {filteredProducts.map(product => (
                 <ProductCardHome
                   image={product.image || product.images || 'https://picsum.photos/200'} /* La tercer imagen es por el momento como alternativa mientras construyo la página */
-                  key={product.sku}
+                  key={product.id}
                   name={product.product_name}
                   price={product.price}
                   productId={product.id}
