@@ -1,6 +1,6 @@
 import '@/styles/form.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { swalSuccess } from '@/utils/sweetAlerts'
+import { swalSuccess, swalError } from '@/utils/sweetAlerts'
 import { useForm } from 'react-hook-form'
 import { schemaLogin } from '@/utils/formsSchema'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -27,6 +27,11 @@ const Login = () => {
         navigate('/')
       }
     } catch (error) {
+      if (error.response && error.response.status === 401) {
+        swalError('Login failed. Please check your credentials and try again.', error.message)
+      } else {
+        swalError('An unexpected error occurred. Please try again.', error.message)
+      }
       console.error('Error logging in:', error)
     }
   }

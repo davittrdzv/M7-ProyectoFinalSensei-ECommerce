@@ -15,7 +15,7 @@ const SearchBar = () => {
     setFilteredProducts(searchedProduct)
     setSearchTerm(search)
     setSearch('')
-    navigate('/') // redirige a Home después de actualizar el estado
+    navigate('/')
   }
 
   return (

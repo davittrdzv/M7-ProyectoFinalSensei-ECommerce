@@ -17,4 +17,20 @@ const swalSuccess = (message) => {
   })
 }
 
-export { swalSuccess }
+const swalError = (message, error) => {
+  return mySwal.fire({
+    title: 'Oops...',
+    text: `${message}`,
+    footer: `${error}`,
+    icon: 'error',
+    draggable: false,
+    confirmButtonColor: '#FFD700',
+    background: 'black',
+    color: '#ffffff',
+    customClass: {
+      confirmButton: 'btn-swal-ok'
+    }
+  })
+}
+
+export { swalSuccess, swalError }

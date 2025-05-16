@@ -1,5 +1,5 @@
 import '@/styles/form.css'
-import { swalSuccess } from '@/utils/sweetAlerts'
+import { swalSuccess, swalError } from '@/utils/sweetAlerts'
 import { useForm } from 'react-hook-form'
 import { schemaSignUp } from '@/utils/formsSchema'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -24,6 +24,7 @@ const SignUp = () => {
         navigate('/login')
       }
     } catch (error) {
+      swalError('An unexpected error occurred. Please try again.', error.message)
       console.error('Error registering user:', error)
     }
   }

@@ -19,6 +19,7 @@ const AddProducts = () => {
   const onSubmit = async (data) => {
     try {
       data.sku = crypto.randomUUID()
+      data.isActive = true
       data.image = 'https://i.pinimg.com/originals/eb/83/be/eb83be580847bcdc4c8f403c8085d3c8.jpg'
       const { status } = await addItemService(data, token)
       if (status === 200) {
