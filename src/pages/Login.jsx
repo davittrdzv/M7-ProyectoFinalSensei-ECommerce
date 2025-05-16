@@ -1,27 +1,17 @@
 import '@/styles/form.css'
 import { Link, useNavigate } from 'react-router-dom'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import { swalSuccess } from '@/utils/sweetAlerts'
 import { useForm } from 'react-hook-form'
+import { schemaLogin } from '@/utils/formsSchema'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 import { logInUserService } from '@/services/userServices'
 import { useAuthContext } from '@/hooks/useAuthContext'
 
-const schema = yup.object({
-  email: yup
-    .string()
-    .email('Invalid E-mail')
-    .required('E-Mail is required'),
-  password: yup
-    .string()
-    .required('Password is required')
-}).required()
+const schema = schemaLogin
 
 const Login = () => {
   const { login } = useAuthContext()
   const navigate = useNavigate()
-  const logInSuccess = withReactContent(Swal)
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(schema)
@@ -33,17 +23,7 @@ const Login = () => {
       if (status === 200) {
         const userLogged = await login(data.token)
         reset()
-        logInSuccess.fire({
-          title: `Welcome ${userLogged.first_name} ${userLogged.last_name}!`,
-          icon: 'success',
-          draggable: false,
-          confirmButtonColor: '#FFD700',
-          background: 'black',
-          color: '#ffffff',
-          customClass: {
-            confirmButton: 'btn-swal-ok'
-          }
-        })
+        swalSuccess(`Welcome ${userLogged.first_name} ${userLogged.last_name}!`)
         navigate('/')
       }
     } catch (error) {

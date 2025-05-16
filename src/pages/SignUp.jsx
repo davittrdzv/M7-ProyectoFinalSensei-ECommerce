@@ -1,38 +1,15 @@
 import '@/styles/form.css'
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import { swalSuccess } from '@/utils/sweetAlerts'
 import { useForm } from 'react-hook-form'
+import { schemaSignUp } from '@/utils/formsSchema'
 import { yupResolver } from '@hookform/resolvers/yup'
-import * as yup from 'yup'
 import { signUpUserService } from '@/services/userServices'
 import { useNavigate } from 'react-router-dom'
 
-const schema = yup.object({
-  first_name: yup
-    .string()
-    .required('First Name is required')
-    .matches(/^[A-Za-z\s]+$/, 'Only letters are accepted'),
-  last_name: yup
-    .string()
-    .required('Last Name is required')
-    .matches(/^[A-Za-z\s]+$/, 'Only letters are accepted'),
-  gender: yup
-    .string()
-    .required('Gender is required'),
-  email: yup
-    .string()
-    .email('Invalid E-mail')
-    .required('E-Mail is required'),
-  password: yup
-    .string()
-    .required('Password is required')
-    .min(8, 'Password is too short - should be 8 characters minimum.')
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%.^&*])/, 'The password must have at least 8 characters, one number, one uppercase letter, one lowercase letter and one special character'),
-}).required()
+const schema = schemaSignUp
 
 const SignUp = () => {
   const navigate = useNavigate()
-  const signUpSuccess = withReactContent(Swal)
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm({
     resolver: yupResolver(schema)
@@ -43,17 +20,7 @@ const SignUp = () => {
       const { status } = await signUpUserService(data)
       if (status === 201) {
         reset()
-        signUpSuccess.fire({
-          title: 'User registered successfully!',
-          icon: 'success',
-          draggable: false,
-          confirmButtonColor: '#FFD700',
-          background: 'black',
-          color: '#ffffff',
-          customClass: {
-            confirmButton: 'btn-swal-ok'
-          }
-        })
+        swalSuccess('User registered successfully!')
         navigate('/login')
       }
     } catch (error) {
