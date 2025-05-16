@@ -5,6 +5,7 @@ import SignUp from '@/pages/SignUp'
 import About from '@/pages/About'
 import UserProfile from '@/pages/UserProfile'
 import AddProducts from '@/pages/AddProducts'
+import ShoppingCart from '@/pages/ShoppingCart'
 import NotFound from '@/pages/NotFound'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { useAuthContext } from '@/hooks/useAuthContext'
@@ -21,6 +22,7 @@ const RoutesIndex = () => {
         <Route path='/signup' element={!isAuthenticated ? <SignUp /> : <Navigate to='/' />} />
         <Route path='/about' element={<About />} />
         <Route path='/userprofile' element={isAuthenticated ? <UserProfile /> : <Navigate to='/' />} />
+        <Route path='/shoppingcart' element={isAuthenticated ? <ShoppingCart /> : <Navigate to='/' />} />
         <Route path='/addproducts' element={isAuthenticated && user?.role === 'ADMIN' ? <AddProducts /> : <Navigate to='/' />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
