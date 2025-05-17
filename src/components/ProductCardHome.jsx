@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import { Tooltip } from 'bootstrap'
 import { useAuthContext } from '@/hooks/useAuthContext'
+import { useShopCartContext } from '@/hooks/useShopCartContext'
 import { useEffect } from 'react'
 
 const ProductCardHome = ({ image, name, price, productId }) => {
   const { isAuthenticated, loading } = useAuthContext()
+  const { addToShopCart } = useShopCartContext()
   const placeholderPic = 'https://picsum.photos/200'
   const handlePicError = (e) => {
     e.target.src = placeholderPic
@@ -46,6 +48,7 @@ const ProductCardHome = ({ image, name, price, productId }) => {
             <Link to={`/productdetails/${productId}`} className='btn btn-custom-dark w-100'>Details</Link>
             <button
               className={`btn btn-custom-gold w-100 ${!isAuthenticated ? 'disabled' : ''}`}
+              onClick={() => addToShopCart(productId)}
               {...tooltipAttrs}
             >
               Add to Cart

@@ -30,6 +30,7 @@ const ProductDetails = () => {
           ? (
             <div className='container text-center'>
               <ProductCardDetails
+                productId={product.id}
                 image={product.image || product.images || 'https://picsum.photos/200'}
                 name={product.product_name}
                 description={product.description}
