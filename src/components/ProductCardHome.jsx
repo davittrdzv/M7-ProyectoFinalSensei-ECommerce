@@ -46,13 +46,25 @@ const ProductCardHome = ({ image, name, price, productId }) => {
           </h6>
           <div className='d-flex justify-content-around gap-2'>
             <Link to={`/productdetails/${productId}`} className='btn btn-custom-dark w-100'>Details</Link>
-            <button
-              className={`btn btn-custom-gold w-100 ${!isAuthenticated ? 'disabled' : ''}`}
-              onClick={() => addToShopCart(productId)}
-              {...tooltipAttrs}
-            >
-              Add to Cart
-            </button>
+            {
+              isAuthenticated
+                ? (
+                  <button
+                    className='btn btn-custom-gold w-100 '
+                    onClick={() => addToShopCart(productId)}
+                  >
+                    Add to Cart
+                  </button>
+                  )
+                : (
+                  <button
+                    className='btn btn-custom-gold w-100 disabled'
+                    {...tooltipAttrs}
+                  >
+                    Add to Cart
+                  </button>
+                  )
+            }
           </div>
         </div>
       </div>

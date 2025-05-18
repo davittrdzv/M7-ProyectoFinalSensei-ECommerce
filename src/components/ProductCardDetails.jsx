@@ -54,13 +54,25 @@ const ProductCardDetails = ({ productId, image, name, description, price, catego
             <p className='card-text text-justify'>{description}</p>
             <h5 className='card-text text-justify'><strong>{isActive ? 'Available' : 'Unavailable'}</strong></h5>
             <div className='container'>
-              <button
-                className={`btn btn-custom-gold ${!isAuthenticated ? 'disabled' : ''}`}
-                onClick={() => addToShopCart(productId)}
-                {...tooltipAttrs}
-              >
-                Add to Cart
-              </button>
+              {
+                isAuthenticated
+                  ? (
+                    <button
+                      className='btn btn-custom-gold'
+                      onClick={() => addToShopCart(productId)}
+                    >
+                      Add to Cart
+                    </button>
+                    )
+                  : (
+                    <button
+                      className='btn btn-custom-gold disabled'
+                      {...tooltipAttrs}
+                    >
+                      Add to Cart
+                    </button>
+                    )
+              }
             </div>
           </div>
         </div>
