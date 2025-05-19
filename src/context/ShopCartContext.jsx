@@ -9,25 +9,29 @@ const ShopCartProvider = ({ children }) => {
   const { products } = useProductContext()
 
   const [userShopCart, setUserShopCart] = useState([])
+  const [isCartReady, setIsCartReady] = useState(false)
 
-  // Cargar carrito del usuario cuando esté autenticado y user.email esté disponible
+  // Cargar carrito cuando el usuario esté listo
   useEffect(() => {
     if (isAuthenticated && user?.email) {
       const key = `${user.email}_shopCart`
       const storedCart = localStorage.getItem(key)
-      setUserShopCart(storedCart ? JSON.parse(storedCart) : [])
+      const parsedCart = storedCart ? JSON.parse(storedCart) : []
+      setUserShopCart(parsedCart)
+      setIsCartReady(true) // ✅ Marcar que ya se cargó desde localStorage
     } else {
-      setUserShopCart([]) // Limpiar carrito si se hace logout
+      setUserShopCart([])
+      setIsCartReady(false)
     }
   }, [isAuthenticated, user?.email])
 
-  // Guardar en localStorage si hay usuario autenticado
+  // Guardar en localStorage cuando cambie el carrito
   useEffect(() => {
-    if (isAuthenticated && user?.email) {
+    if (isAuthenticated && user?.email && isCartReady) {
       const key = `${user.email}_shopCart`
       localStorage.setItem(key, JSON.stringify(userShopCart))
     }
-  }, [userShopCart, isAuthenticated, user?.email])
+  }, [userShopCart, isAuthenticated, user?.email, isCartReady])
 
   const addToShopCart = (productId) => {
     if (!isAuthenticated || !user?.email) return
@@ -43,9 +47,32 @@ const ShopCartProvider = ({ children }) => {
     }
   }
 
+  const increaseQty = (productId) => {
+    if (!isAuthenticated || !user?.email) return
+    setUserShopCart(userShopCart.map(p =>
+      p.id === productId ? { ...p, quantity: p.quantity + 1 } : p
+    ))
+  }
+
+  const decreaseQty = (productId) => {
+    if (!isAuthenticated || !user?.email) return
+    setUserShopCart(userShopCart.map(p =>
+      p.id === productId && p.quantity > 1 ? { ...p, quantity: p.quantity - 1 } : p
+    ))
+  }
+
+  const deleteProduct = (productId) => {
+    if (!isAuthenticated || !user?.email) return
+    const newShopCart = userShopCart.filter(product => product.id !== productId)
+    setUserShopCart(newShopCart)
+  }
+
   const data = {
     userShopCart,
-    addToShopCart
+    addToShopCart,
+    increaseQty,
+    decreaseQty,
+    deleteProduct
   }
 
   return (

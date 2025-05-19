@@ -12,6 +12,7 @@ const ShoppingCart = () => {
             {userShopCart.map(product => (
               <ProductCardShopCart
                 key={product.id}
+                productId={product.id}
                 image={product.image || product.images}
                 name={product.product_name}
                 description={product.description}

@@ -1,4 +1,7 @@
-const ProductCardShopCart = ({ image, name, description, price, quantity }) => {
+import { useShopCartContext } from '@/hooks/useShopCartContext'
+
+const ProductCardShopCart = ({ productId, image, name, description, price, quantity }) => {
+  const { increaseQty, decreaseQty, deleteProduct } = useShopCartContext()
   const placeholderPic = 'https://picsum.photos/200'
   const handlePicError = (e) => {
     e.target.src = placeholderPic
@@ -24,9 +27,22 @@ const ProductCardShopCart = ({ image, name, description, price, quantity }) => {
               <strong>{price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</strong>
             </p>
             <div>
-              <button>- o Borrar</button>
+              <button
+                className={quantity === 1 ? 'btn disabled' : 'btn'}
+                onClick={() => decreaseQty(productId)}
+              >-
+              </button>
               <span>{quantity}</span>
-              <button>+</button>
+              <button
+                className='btn'
+                onClick={() => increaseQty(productId)}
+              >+
+              </button>
+              <button
+                className='btn'
+                onClick={() => deleteProduct(productId)}
+              >Delete
+              </button>
             </div>
           </div>
         </div>
