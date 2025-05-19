@@ -22,13 +22,12 @@ const ProductDetails = () => {
   }, [productId])
 
   return (
-    <div className='container border-top border-danger mt-4_0rem'> {/* border-top border-danger son para referencia */}
-      <h1 className='text-center'>Product Details</h1>
+    <div className='p-1 border-top border-danger mt-4_0rem product-details-wrapper'> {/* border-top border-danger son para referencia */}
       {loading
         ? <h1 className='text-center'>Loading...</h1>
         : product
           ? (
-            <div className='container text-center'>
+            <div className='mt-1 text-center'>
               <ProductCardDetails
                 productId={product.id}
                 image={product.image || product.images || 'https://picsum.photos/200'}

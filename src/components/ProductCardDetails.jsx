@@ -30,7 +30,7 @@ const ProductCardDetails = ({ productId, image, name, description, price, catego
   if (loading) return null
 
   return (
-    <div className='card mb-3 card-dark'>
+    <div className='card card-dark'>
       <div className='row g-0'>
         <div className='col-md-4'>
           <img
