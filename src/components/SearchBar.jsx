@@ -21,21 +21,6 @@ const SearchBar = () => {
   return (
     <form onSubmit={handleSearch}>
       <div className='input-group mb-3'>
-        <button
-          className='btn btn-outline-secondary dropdown-toggle btn-custom-gold'
-          type='button'
-          data-bs-toggle='dropdown'
-          aria-expanded='false'
-        >
-          Search by Category
-        </button>
-        <ul className='dropdown-menu'>
-          <li><a className='dropdown-item' href='#'>All categories</a></li>
-          <li><hr className='dropdown-divider' /></li>
-          <li><a className='dropdown-item' href='#'>Category 1</a></li>
-          <li><a className='dropdown-item' href='#'>Category 2</a></li>
-          <li><a className='dropdown-item' href='#'>Category 3</a></li>
-        </ul>
         <input
           type='text'
           className='form-control'

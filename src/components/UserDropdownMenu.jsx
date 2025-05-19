@@ -5,7 +5,7 @@ const UserDropDownMenu = () => {
   const { logout, user } = useAuthContext()
 
   return (
-    <div className='dropdown text-end position-relative p-4'>
+    <div className='dropdown text-end position-relative'>
       <Link
         to='/'
         className='d-block link-body-emphasis text-decoration-none dropdown-toggle'
@@ -20,7 +20,7 @@ const UserDropDownMenu = () => {
           className='rounded-circle'
         />
       </Link>
-      <ul className='dropdown-menu text-small'>
+      <ul className='dropdown-menu dropdown-menu-lg-end text-small'>
         <li>
           <span className='dropdown-item'>{`${user?.first_name} ${user?.last_name}`}</span>
         </li>
@@ -31,23 +31,20 @@ const UserDropDownMenu = () => {
         <li>
           <Link className='dropdown-item' to='/shoppingcart'>My Shopping Cart</Link>
         </li>
-        {user?.role === 'ADMIN' &&
-          (
-            <li>
-              <Link className='dropdown-item' to='/addproducts'>Add New Products</Link>
-            </li>
-          )}
+        {user?.role === 'ADMIN' && (
+          <li>
+            <Link className='dropdown-item' to='/addproducts'>Add New Products</Link>
+          </li>
+        )}
         <li><hr className='dropdown-divider' /></li>
         <li>
           <Link
             className='dropdown-item'
             to='/login'
-            onClick={
-                    () => {
-                      window.scrollTo({ top: 0, behavior: 'smooth' })
-                      logout()
-                    }
-                  }
+            onClick={() => {
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+              logout()
+            }}
           >
             Sign out
           </Link>
