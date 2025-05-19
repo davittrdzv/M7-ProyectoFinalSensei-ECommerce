@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect, useMemo } from 'react'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import { useProductContext } from '@/hooks/useProductContext'
 
@@ -67,12 +67,23 @@ const ShopCartProvider = ({ children }) => {
     setUserShopCart(newShopCart)
   }
 
+  const total = useMemo(() => {
+    const subtotal = userShopCart.reduce((sum, p) => sum + p.price * p.quantity, 0)
+    const shippingCost = subtotal > 1000 ? 0 : 300
+    return {
+      subtotal,
+      shippingCost,
+      total: subtotal + shippingCost
+    }
+  }, [userShopCart])
+
   const data = {
     userShopCart,
     addToShopCart,
     increaseQty,
     decreaseQty,
-    deleteProduct
+    deleteProduct,
+    total
   }
 
   return (
