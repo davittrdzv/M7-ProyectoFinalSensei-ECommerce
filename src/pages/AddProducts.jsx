@@ -36,7 +36,9 @@ const AddProducts = () => {
     <div className='border-top border-danger mt-4_0rem'>
       <main className='form-signin w-100 m-auto'>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <h1 className='h3 mb-3 fw-normal text-center'>Add a New Product</h1>
+          <div className='card mt-2 mb-2 card-dark'>
+            <h1 className='text-center'>Add a New Product</h1>
+          </div>
           <div className='form-floating'>
             <input
               type='text'

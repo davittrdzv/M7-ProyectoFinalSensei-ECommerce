@@ -32,8 +32,10 @@ const SignUp = () => {
   return (
     <div className='border-top border-danger mt-4_0rem'>
       <main className='form-signin w-100 m-auto'>
+        <div className='card mt-2 mb-3 card-dark'>
+          <h1 className='text-center'>Create your Account</h1>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <h1 className='h3 mb-3 fw-normal text-center'>Create your Account</h1>
           <div className='form-floating'>
             <input
               type='text'

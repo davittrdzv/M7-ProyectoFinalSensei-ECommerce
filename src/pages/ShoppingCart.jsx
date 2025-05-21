@@ -5,7 +5,9 @@ const ShoppingCart = () => {
   const { userShopCart, total } = useShopCartContext()
   return (
     <div className='container border-top border-danger mt-4_0rem'> {/* border-top border-danger son para referencia */}
-      <h1 className='text-center'>Shopping Cart</h1>
+      <div className='card mt-2 mb-2 card-dark'>
+        <h1 className='text-center'>Your Shopping Cart</h1>
+      </div>
       {userShopCart.length > 0
         ? (
           <>

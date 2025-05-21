@@ -23,16 +23,16 @@ body {
 .navbar-custom,
 .navbar-custom .nav-link {
   color: var(--text-light) !important;
-} /*Checar esta y la siguiente creo que ha contradicción o alguna ya ni sirve */
+}
 
 .navbar-custom .nav-link:hover,
 .navbar-custom .nav-link.active {
   color: var(--gold) !important; 
-} /*Checar esta y la anterior creo que ha contradicción o alguna ya ni sirve */
+}
 
 .navbar-brand {
   color: var(--gold) !important; 
-} /*Checar esta y la anterior creo que ha contradicción o alguna ya ni sirve */
+}
 
 .mt-3_5rem {
     margin-top: 3.5rem !important; /* A la par de NavBar */
@@ -58,13 +58,15 @@ body {
 }
 
 .for-hover:hover {
-  color: var(--gold);
   transform: scale(1.03);
   box-shadow: 0 0 20px rgba(0, 0, 0, .75);
   border: 2px solid var(--gold);
   z-index: 2;
 }
 
+.for-hover:hover h5, .for-hover:hover h6 {
+  color: var(--gold);
+}
   
 .card-title {
   min-height: 2rem;
@@ -137,27 +139,82 @@ body {
   margin: 0;
 }
 
-/* Estilo base para cada ítem del dropdown */
 .dropdown-menu .dropdown-item {
   background-color: var(--primary-color);
   color: white;
 }
 
-/* Hover */
 .dropdown-menu .dropdown-item:hover,
 .dropdown-menu .dropdown-item:focus {
   background-color: var(--gold);
   color: var(--text-dark);
 }
 
-/* Active (clic) */
 .dropdown-menu .dropdown-item:active {
   background-color: var(--gold) !important;
   color: var(--text-dark) !important;
 }
 
-/* Separador personalizado */
 .dropdown-menu .dropdown-divider {
   border-top: 1px solid var(--gold);
   margin: 0.5rem 0;
+}
+
+@media (min-width: 768px) {
+  .card-img-container {
+    max-height: 220px;
+    max-width: 220px;
+    overflow: hidden;
+  }
+
+  .card-img-container img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.qty-wrapper {
+  border: 0.1rem solid var(--text-light);
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  background-color: var(--primary-color);
+  min-width: 9.5rem;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.qty-wrapper:hover {
+  border: 0.1rem solid var(--gold);
+}
+
+.qty-display {
+  width: 2.5rem;
+  text-align: center;
+  font-weight: bold;
+  color: var(--text-light);
+}
+
+.btn-trash,
+.btn-qty {
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  transition: color 0.2s;
+}
+
+.btn-trash:hover,
+.btn-qty:hover {
+  color: var(--gold);
+}
+
+.btn-qty:disabled {
+  color: gray;
+  pointer-events: none;
 }

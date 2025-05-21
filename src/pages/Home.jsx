@@ -6,7 +6,12 @@ const Home = () => {
 
   return (
     <div className='container border-top border-danger mt-4_0rem'> {/* border-top border-danger son para referencia */}
-      <h1 className='text-center'>Home</h1>
+      <div className='card mt-2 mb-3 card-dark'>
+        <h1 className='text-center'>Welcome to DRV E-COMMERCE!</h1>
+        {searchTerm
+          ? (<h6 className='text-center'>{`Results for "${searchTerm}"`}</h6>)
+          : (<h6 className='text-center'>Please browse through all our products, or search for one.</h6>)}
+      </div>
       {loading
         ? (
           <h1 className='text-center'>Loading...</h1>
@@ -16,7 +21,7 @@ const Home = () => {
             <h5 className='text-center'>{`We found no products with the keyword "${searchTerm}"`}</h5>
             )
           : (
-            <div className='row row-cols-1 row-cols-md-4 g-4'> {/* Este div es solo para mostrar los productos */}
+            <div className='row row-cols-1 row-cols-md-4 g-4'>
               {filteredProducts.map(product => (
                 <ProductCardHome
                   image={product.image || product.images}

@@ -38,9 +38,11 @@ const Login = () => {
   return (
     <div className='border-top border-danger mt-4_0rem'>
       <main className='form-signin w-100 m-auto'>
+        <div className='card mt-2 mb-3 card-dark'>
+          <h1 className='text-center'>Hi Guest!</h1>
+          <h6 className='text-center'>Type your E-Mail and Password to Log In</h6>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <h3 className='mb-3 fw-normal text-center'>Hi Guest!</h3>
-          <p className='mb-3 fw-normal text-center'>Type your E-Mail and Password to Log In</p>
           <div className='form-floating'>
             <input
               type='email'
