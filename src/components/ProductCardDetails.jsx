@@ -1,3 +1,4 @@
+import { placeholderPic, handlePicError } from '@/utils/placeholderPic'
 import { Tooltip } from 'bootstrap'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import { useShopCartContext } from '@/hooks/useShopCartContext'
@@ -6,10 +7,6 @@ import { useEffect } from 'react'
 const ProductCardDetails = ({ productId, image, name, description, price, category, brand, sku, isActive }) => {
   const { isAuthenticated, loading } = useAuthContext()
   const { addToShopCart } = useShopCartContext()
-  const placeholderPic = 'https://picsum.photos/200'
-  const handlePicError = (e) => {
-    e.target.src = placeholderPic
-  }
 
   useEffect(() => {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')

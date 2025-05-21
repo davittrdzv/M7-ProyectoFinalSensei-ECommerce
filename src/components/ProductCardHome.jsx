@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { placeholderPic, handlePicError } from '@/utils/placeholderPic'
 import { Tooltip } from 'bootstrap'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import { useShopCartContext } from '@/hooks/useShopCartContext'
@@ -7,10 +8,6 @@ import { useEffect } from 'react'
 const ProductCardHome = ({ image, name, price, productId }) => {
   const { isAuthenticated, loading } = useAuthContext()
   const { addToShopCart } = useShopCartContext()
-  const placeholderPic = 'https://picsum.photos/200'
-  const handlePicError = (e) => {
-    e.target.src = placeholderPic
-  }
 
   useEffect(() => {
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
@@ -32,7 +29,7 @@ const ProductCardHome = ({ image, name, price, productId }) => {
 
   return (
     <div className='col'>
-      <div className='card h-100 card-dark'>
+      <div className='card h-100 card-dark for-hover'>
         <img
           src={image || placeholderPic}
           className='card-img-top object-fit-cover'

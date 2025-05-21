@@ -1,5 +1,5 @@
 import '@/styles/form.css'
-import { swalSuccess } from '@/utils/sweetAlerts'
+import { swalSuccess, swalError } from '@/utils/sweetAlerts'
 import { useForm } from 'react-hook-form'
 import { schemaAddProduct } from '@/utils/formsSchema'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -20,7 +20,6 @@ const AddProducts = () => {
     try {
       data.sku = crypto.randomUUID()
       data.isActive = true
-      data.image = 'https://i.pinimg.com/originals/eb/83/be/eb83be580847bcdc4c8f403c8085d3c8.jpg'
       const { status } = await addItemService(data, token)
       if (status === 200) {
         reset()
@@ -29,6 +28,7 @@ const AddProducts = () => {
       }
     } catch (error) {
       console.error('Error Adding Product:', error)
+      swalError('An unexpected error occurred. Please try again.', error.message)
     }
   }
 
@@ -96,13 +96,24 @@ const AddProducts = () => {
           <div className='form-floating'>
             <input
               type='text'
-              className='form-control formElementLast'
+              className='form-control formElementBetween'
               placeholder='Brand'
               id='brand'
               name='brand'
               {...register('brand', { required: true })}
             /><label htmlFor='brand'>Brand</label>
             <p className='text-center error-msg mb-0'>{errors.brand?.message}</p>
+          </div>
+          <div className='form-floating'>
+            <input
+              type='url'
+              className='form-control formElementLast'
+              placeholder='Image'
+              id='image'
+              name='image'
+              {...register('image', { required: true })}
+            /><label htmlFor='image'>Image URL</label>
+            <p className='text-center error-msg mb-0'>{errors.image?.message}</p>
           </div>
           <button
             className='btn btn-custom-gold w-100 py-2'

@@ -51,7 +51,11 @@ const schemaAddProduct = yup.object({
     .required('Category is required'),
   brand: yup
     .string()
-    .required('Brand is required')
+    .required('Brand is required'),
+  image: yup
+    .string()
+    .required('Image url is required')
+    .url('Enter a valid URL')
 }).required()
 
 export { schemaSignUp, schemaLogin, schemaAddProduct }

@@ -1,11 +1,8 @@
+import { placeholderPic, handlePicError } from '@/utils/placeholderPic'
 import { useShopCartContext } from '@/hooks/useShopCartContext'
 
 const ProductCardShopCart = ({ productId, image, name, description, price, quantity }) => {
   const { increaseQty, decreaseQty, deleteProduct } = useShopCartContext()
-  const placeholderPic = 'https://picsum.photos/200'
-  const handlePicError = (e) => {
-    e.target.src = placeholderPic
-  }
   return (
     <div className='card mb-3'>
       <div className='row g-0'>

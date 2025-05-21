@@ -1,3 +1,4 @@
+import { swalSuccess } from '@/utils/sweetAlerts'
 import { createContext, useState, useEffect, useMemo } from 'react'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import { useProductContext } from '@/hooks/useProductContext'
@@ -40,10 +41,12 @@ const ShopCartProvider = ({ children }) => {
       setUserShopCart(userShopCart.map(p =>
         p.id === productId ? { ...p, quantity: p.quantity + 1 } : p
       ))
+      swalSuccess(`${existingProduct.product_name} added to Shopping Cart!`)
     } else {
       const addedProduct = products.find(product => product.id === productId)
       if (!addedProduct) return
       setUserShopCart([...userShopCart, { ...addedProduct, quantity: 1 }])
+      swalSuccess(`${addedProduct.product_name} added to Shopping Cart!`)
     }
   }
 

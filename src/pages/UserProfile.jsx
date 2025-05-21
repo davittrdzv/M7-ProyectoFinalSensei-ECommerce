@@ -7,7 +7,6 @@ const UserProfile = () => {
       <h2 className='text-center'>
         {`Welcome to your Profile Information, ${user.first_name} ${user.last_name}!`}
       </h2>
-
       <div className='mx-auto mt-4 user-table-container'>
         <table className='table table-bordered table-striped mb-5'>
           <tbody>
