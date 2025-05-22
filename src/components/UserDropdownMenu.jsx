@@ -22,10 +22,6 @@ const UserDropDownMenu = () => {
       </Link>
       <ul className='dropdown-menu dropdown-menu-lg-end text-small'>
         <li>
-          <span className='dropdown-item'>{`${user?.first_name} ${user?.last_name}`}</span>
-        </li>
-        <li><hr className='dropdown-divider' /></li>
-        <li>
           <Link className='dropdown-item' to='/userprofile'>My Profile</Link>
         </li>
         <li>

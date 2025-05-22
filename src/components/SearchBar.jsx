@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import { useProductContext } from '@/hooks/useProductContext'
 import { useState } from 'react'
 
-const SearchBar = () => {
+const SearchBar = ({ onSearchComplete }) => {
   const [search, setSearch] = useState('')
   const { products, setFilteredProducts, setSearchTerm } = useProductContext()
   const navigate = useNavigate()
@@ -15,6 +15,9 @@ const SearchBar = () => {
     setFilteredProducts(searchedProduct)
     setSearchTerm(search)
     setSearch('')
+    if (typeof onSearchComplete === 'function') {
+      onSearchComplete()
+    }
     navigate('/')
   }
 

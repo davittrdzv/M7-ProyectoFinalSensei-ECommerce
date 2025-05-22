@@ -1,11 +1,23 @@
+import * as bootstrap from 'bootstrap'
 import { NavLink } from 'react-router-dom'
 import SearchBar from '@/components/SearchBar.jsx'
 import UserDropDownMenu from '@/components/UserDropDownMenu.jsx'
 import mePic from '@/assets/mePic.png'
 import { useAuthContext } from '@/hooks/useAuthContext'
+import useIsMobile from '@/hooks/useIsMobile'
 
 const NavBar = () => {
-  const { isAuthenticated, user } = useAuthContext()
+  const { isAuthenticated, user, logout } = useAuthContext()
+  const isMobile = useIsMobile()
+
+  const collapseNavbar = () => {
+    const navbar = document.getElementById('navbarNavAltMarkup')
+    const bsCollapse = bootstrap.Collapse.getInstance(navbar)
+    if (bsCollapse) {
+      bsCollapse.hide()
+    }
+  }
+
   return (
     <nav className='navbar navbar-expand-lg fixed-top border-bottom border-primary navbar-custom'>
       <div className='container-fluid'>
@@ -29,40 +41,99 @@ const NavBar = () => {
             <div className='navbar-nav'>
               <NavLink
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                  collapseNavbar()
+                }}
                 to='/'
               >
                 Home
               </NavLink>
               <NavLink
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                onClick={() => {
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                  collapseNavbar()
+                }}
                 to='/about'
               >
                 About
               </NavLink>
             </div>
             <div className='flex-grow-1 px-3'>
-              <SearchBar />
+              <SearchBar onSearchComplete={collapseNavbar} />
             </div>
             <div className='d-flex flex-column flex-lg-row align-items-start align-items-lg-center gap-2 gap-lg-3'>
               <span className='mb-0'>
                 {user ? `Hi, ${user.first_name} ${user.last_name}!` : 'Hi, Guest!'}
               </span>
               {isAuthenticated
-                ? <UserDropDownMenu />
+                ? (
+                    !isMobile
+                      ? <UserDropDownMenu />
+                      : <>
+                        <NavLink
+                          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                          onClick={() => {
+                            window.scrollTo({ top: 0, behavior: 'smooth' })
+                            collapseNavbar()
+                          }}
+                          to='/userprofile'
+                        >
+                          My Profile
+                        </NavLink>
+                        <NavLink
+                          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                          onClick={() => {
+                            window.scrollTo({ top: 0, behavior: 'smooth' })
+                            collapseNavbar()
+                          }}
+                          to='/shoppingcart'
+                        >
+                          My Shopping Cart
+                        </NavLink>
+                        {user?.role === 'ADMIN' &&
+                          <NavLink
+                            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                            onClick={() => {
+                              window.scrollTo({ top: 0, behavior: 'smooth' })
+                              collapseNavbar()
+                            }}
+                            to='/addproducts'
+                          >
+                            Add New Products
+                          </NavLink>}
+                        <NavLink
+                          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                          onClick={() => {
+                            window.scrollTo({ top: 0, behavior: 'smooth' })
+                            logout()
+                            collapseNavbar()
+                          }}
+                          to='/login'
+                        >
+                          Sign Out
+                        </NavLink>
+                        </>
+                  )
                 : (
                   <>
                     <NavLink
                       className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                        collapseNavbar()
+                      }}
                       to='/login'
                     >
                       Log in
                     </NavLink>
                     <NavLink
                       className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                      onClick={() => {
+                        window.scrollTo({ top: 0, behavior: 'smooth' })
+                        collapseNavbar()
+                      }}
                       to='/signup'
                     >
                       Sign up
