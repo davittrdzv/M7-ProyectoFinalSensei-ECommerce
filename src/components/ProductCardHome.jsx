@@ -1,30 +1,15 @@
 import { Link } from 'react-router-dom'
 import { placeholderPic, handlePicError } from '@/utils/placeholderPic'
-import { Tooltip } from 'bootstrap'
+import { useTooltips, getTooltipAttrs } from '@/hooks/useTooltips'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import { useShopCartContext } from '@/hooks/useShopCartContext'
-import { useEffect } from 'react'
 
 const ProductCardHome = ({ image, name, price, productId }) => {
   const { isAuthenticated, loading } = useAuthContext()
   const { addToShopCart } = useShopCartContext()
 
-  useEffect(() => {
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    // eslint-disable-next-line no-unused-vars
-    const tooltipList = [...tooltipTriggerList].map(
-      (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl)
-    )
-  }, [])
-
-  const tooltipAttrs = !isAuthenticated
-    ? {
-        'data-bs-toggle': 'tooltip',
-        'data-bs-placement': 'top',
-        title: 'You must log in to add an item to your cart',
-      }
-    : {}
-
+  useTooltips()
+  const tooltipAttrs = getTooltipAttrs(isAuthenticated)
   if (loading) return null
 
   return (
