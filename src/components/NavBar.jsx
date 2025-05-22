@@ -70,51 +70,56 @@ const NavBar = () => {
               {isAuthenticated
                 ? (
                     !isMobile
-                      ? <UserDropDownMenu />
-                      : <>
-                        <NavLink
-                          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                          onClick={() => {
-                            window.scrollTo({ top: 0, behavior: 'smooth' })
-                            collapseNavbar()
-                          }}
-                          to='/userprofile'
-                        >
-                          My Profile
-                        </NavLink>
-                        <NavLink
-                          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                          onClick={() => {
-                            window.scrollTo({ top: 0, behavior: 'smooth' })
-                            collapseNavbar()
-                          }}
-                          to='/shoppingcart'
-                        >
-                          My Shopping Cart
-                        </NavLink>
-                        {user?.role === 'ADMIN' &&
+                      ? (
+                        <UserDropDownMenu />
+                        )
+                      : (
+                        <>
                           <NavLink
                             className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
                             onClick={() => {
                               window.scrollTo({ top: 0, behavior: 'smooth' })
                               collapseNavbar()
                             }}
-                            to='/addproducts'
+                            to='/userprofile'
                           >
-                            Add New Products
-                          </NavLink>}
-                        <NavLink
-                          className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
-                          onClick={() => {
-                            window.scrollTo({ top: 0, behavior: 'smooth' })
-                            logout()
-                            collapseNavbar()
-                          }}
-                          to='/login'
-                        >
-                          Sign Out
-                        </NavLink>
+                            My Profile
+                          </NavLink>
+                          <NavLink
+                            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                            onClick={() => {
+                              window.scrollTo({ top: 0, behavior: 'smooth' })
+                              collapseNavbar()
+                            }}
+                            to='/shoppingcart'
+                          >
+                            My Shopping Cart
+                          </NavLink>
+                          {user?.role === 'ADMIN' && (
+                            <NavLink
+                              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                              onClick={() => {
+                                window.scrollTo({ top: 0, behavior: 'smooth' })
+                                collapseNavbar()
+                              }}
+                              to='/addproducts'
+                            >
+                              Add New Products
+                            </NavLink>
+                          )}
+                          <NavLink
+                            className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+                            onClick={() => {
+                              window.scrollTo({ top: 0, behavior: 'smooth' })
+                              logout()
+                              collapseNavbar()
+                            }}
+                            to='/login'
+                          >
+                            Sign Out
+                          </NavLink>
                         </>
+                        )
                   )
                 : (
                   <>
