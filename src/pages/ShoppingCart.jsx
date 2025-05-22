@@ -22,11 +22,24 @@ const ShoppingCart = () => {
                 quantity={product.quantity}
               />
             ))}
-            <div className='container card'>
-              <p>Subtotal: {total.subtotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>
-              <p>Shipping Costs: {total.shippingCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>
-              <p>Total: {total.total.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>
+            <div className='container card card-dark cart-summary'>
+              <p className='shipping-note text-center'>
+                Free shipping on orders over $1,000.00!
+              </p>
+              <div className='cart-summary-row'>
+                <span>Subtotal:</span>
+                <span>{total.subtotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>
+              </div>
+              <div className='cart-summary-row'>
+                <span>Shipping Costs:</span>
+                <span>{total.shippingCost.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>
+              </div>
+              <div className='cart-summary-row total'>
+                <span>Total:</span>
+                <span>{total.total.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>
+              </div>
             </div>
+
           </>
           )
         : (

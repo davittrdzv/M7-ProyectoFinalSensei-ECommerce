@@ -7,6 +7,7 @@ const ProductDetails = () => {
   const { productId } = useParams()
   const [loading, setLoading] = useState(true)
   const [product, setProduct] = useState(null)
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -24,7 +25,15 @@ const ProductDetails = () => {
   return (
     <div className='p-1 border-top border-danger mt-4_0rem product-details-wrapper'> {/* border-top border-danger son para referencia */}
       {loading
-        ? <h1 className='text-center'>Loading...</h1>
+        ? (
+          <div className='d-flex justify-content-center align-items-center' style={{ minHeight: '300px' }}>
+            <div className='text-center d-flex flex-column align-items-center gap-3'>
+              <div>Loading content, please wait, it may take even a minute.</div>
+              <div className='spinner' />
+            </div>
+          </div>
+
+          )
         : product
           ? (
             <div className='mt-1 text-center'>

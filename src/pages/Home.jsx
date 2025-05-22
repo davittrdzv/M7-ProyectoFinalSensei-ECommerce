@@ -14,7 +14,13 @@ const Home = () => {
       </div>
       {loading
         ? (
-          <h1 className='text-center'>Loading...</h1>
+          <div className='d-flex justify-content-center align-items-center' style={{ minHeight: '300px' }}>
+            <div className='text-center d-flex flex-column align-items-center gap-3'>
+              <div>Loading content, please wait, it may take even a minute.</div>
+              <div className='spinner' />
+            </div>
+          </div>
+
           )
         : filteredProducts.length === 0
           ? (

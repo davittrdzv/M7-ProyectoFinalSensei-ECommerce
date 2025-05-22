@@ -9,6 +9,7 @@
 body {
   background-color: var(--secondary-bg);
   color: var(--text-dark);
+  font-family: 'Lato', sans-serif;
 }
 
 .navbar-custom {
@@ -217,4 +218,54 @@ body {
 .btn-qty:disabled {
   color: gray;
   pointer-events: none;
+}
+
+.cart-summary {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.cart-summary-row.total {
+  font-weight: bold;
+  border-top: 1px solid var(--gold);
+  padding-top: 0.5rem;
+}
+
+.shipping-note {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.page-spinner-wrapper {
+  margin-top: 4.4rem; /* igual que el resto de tus páginas */
+  min-height: calc(100vh - 4.4rem - 4rem); /* ajusta si tu footer tiene otro alto */
+  background-color: var(--secondary-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 8px solid var(--primary-color);
+  border-top: 8px solid var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
