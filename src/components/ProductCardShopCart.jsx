@@ -21,7 +21,7 @@ const ProductCardShopCart = ({ productId, image, name, description, price, quant
               {description}
             </p>
             <p className='card-text'>
-              <strong>{price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</strong>
+              <strong>{(price * quantity).toLocaleString('en-US', { style: 'currency', currency: 'USD' })} ({price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })} each)</strong>
             </p>
             <div className='d-flex align-items-center gap-2 flex-wrap'>
               <div className='qty-wrapper d-flex align-items-center justify-content-between'>

@@ -44,3 +44,34 @@
 .scrollarea {
   overflow-y: auto;
 }
+
+.shopcart-sidebar {
+  background-color: #232F3E;
+  color: #ffffff;
+}
+
+.shopcart-sidebar .btn-custom-gold {
+  color: #333;
+}
+
+.shopcart-sidebar .list-group-item {
+  background-color: #232F3E;
+  color: #ffffff;
+}
+
+.shopcart-sidebar .border-top {
+  border-top: 1px solid #FFD700 !important;
+}
+
+.shopcart-sidebar .bg-light {
+  background-color: #1e2a35 !important;
+  color: #ffffff;
+}
+
+.shopcart-sidebar .fw-bold {
+  color: #FFD700;
+}
+
+.shopcart-sidebar .list-group.list-group-flush.border-bottom {
+  border-bottom: 1px solid #FFD700 !important;
+}
