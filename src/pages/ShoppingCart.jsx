@@ -39,7 +39,6 @@ const ShoppingCart = () => {
                 <span>{total.total.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>
               </div>
             </div>
-
           </>
           )
         : (
