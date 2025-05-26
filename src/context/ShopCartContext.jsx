@@ -80,13 +80,18 @@ const ShopCartProvider = ({ children }) => {
     }
   }, [userShopCart])
 
+  const totalItems = useMemo(() => {
+    return userShopCart.reduce((sum, p) => sum + p.quantity, 0)
+  }, [userShopCart])
+
   const data = {
     userShopCart,
     addToShopCart,
     increaseQty,
     decreaseQty,
     deleteProduct,
-    total
+    total,
+    totalItems
   }
 
   return (

@@ -3,7 +3,7 @@ import { useAuthContext } from '@/hooks/useAuthContext'
 const UserProfile = () => {
   const { user } = useAuthContext()
   return (
-    <div className='container border-top border-danger mt-4_0rem'>
+    <div className='container border-top mt-4_0rem'>
       <div className='card mt-2 mb-3 card-dark'>
         <h1 className='text-center'>{`Welcome to your Profile Information, ${user.first_name} ${user.last_name}!`}</h1>
       </div>

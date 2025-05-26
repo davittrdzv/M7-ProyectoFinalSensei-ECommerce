@@ -2,13 +2,13 @@ import '@/styles/ShopCartSideBar.css'
 import { useShopCartContext } from '@/hooks/useShopCartContext'
 
 const ShopCartSideBar = ({ isOpen, onClose }) => {
-  const { userShopCart, total, increaseQty, decreaseQty, deleteProduct } = useShopCartContext()
+  const { userShopCart, total, totalItems, increaseQty, decreaseQty, deleteProduct } = useShopCartContext()
 
   return (
     <div
       className='shopcart-sidebar position-fixed top-0 end-0 h-100 border-start shadow-lg d-flex flex-column'
       style={{
-        width: isOpen ? '380px' : '0',
+        width: isOpen ? 'min(380px, 100vw)' : '0',
         overflowX: 'hidden',
         zIndex: 1045,
         transition: 'width 0.3s ease-in-out'
@@ -24,7 +24,7 @@ const ShopCartSideBar = ({ isOpen, onClose }) => {
 
       {isOpen && (
         <>
-          <h1 className='fs-5 fw-semibold text-center mb-3'>Your Shopping Cart</h1>
+          <h1 className='fs-5 fw-semibold text-center mb-3'>{`Your Shopping Cart (${totalItems} items)`}</h1>
           <div
             className='flex-grow-1 overflow-auto px-2'
             style={{ maxHeight: 'calc(100vh - 200px)' }}

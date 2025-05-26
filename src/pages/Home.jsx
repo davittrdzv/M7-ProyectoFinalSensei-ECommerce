@@ -5,7 +5,7 @@ const Home = () => {
   const { filteredProducts, loading, searchTerm } = useProductContext()
 
   return (
-    <div className='container border-top border-danger mt-4_0rem'> {/* border-top border-danger son para referencia */}
+    <div className='container border-top mt-4_0rem'>
       <div className='card mt-2 mb-3 card-dark'>
         <h1 className='text-center'>Welcome to DRV E-COMMERCE!</h1>
         {searchTerm

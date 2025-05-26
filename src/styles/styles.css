@@ -35,12 +35,8 @@ body {
   color: var(--gold) !important; 
 }
 
-.mt-3_5rem {
-    margin-top: 3.5rem !important; /* A la par de NavBar */
-}
-
 .mt-4_0rem {
-    margin-top: 4.4rem !important; /* Un poco más abajo de NavBar */
+    margin-top: 4.4rem !important;
 }
 
 .text-justify {
@@ -248,8 +244,8 @@ body {
 }
 
 .page-spinner-wrapper {
-  margin-top: 4.4rem; /* igual que el resto de tus páginas */
-  min-height: calc(100vh - 4.4rem - 4rem); /* ajusta si tu footer tiene otro alto */
+  margin-top: 4.4rem;
+  min-height: calc(100vh - 4.4rem - 4rem);
   background-color: var(--secondary-bg);
   display: flex;
   align-items: center;

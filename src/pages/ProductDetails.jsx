@@ -23,7 +23,7 @@ const ProductDetails = () => {
   }, [productId])
 
   return (
-    <div className='p-1 border-top border-danger mt-4_0rem product-details-wrapper'> {/* border-top border-danger son para referencia */}
+    <div className='p-1 border-top mt-4_0rem product-details-wrapper'>
       {loading
         ? (
           <div className='d-flex justify-content-center align-items-center' style={{ minHeight: '300px' }}>

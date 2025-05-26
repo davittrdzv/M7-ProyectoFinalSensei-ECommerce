@@ -2,9 +2,9 @@ import ProductCardShopCart from '@/components/ProductCardShopCart.jsx'
 import { useShopCartContext } from '@/hooks/useShopCartContext'
 
 const ShoppingCart = () => {
-  const { userShopCart, total } = useShopCartContext()
+  const { userShopCart, total, totalItems } = useShopCartContext()
   return (
-    <div className='container border-top border-danger mt-4_0rem'> {/* border-top border-danger son para referencia */}
+    <div className='container border-top mt-4_0rem'>
       <div className='card mt-2 mb-2 card-dark'>
         <h1 className='text-center'>Your Shopping Cart</h1>
       </div>
@@ -26,6 +26,7 @@ const ShoppingCart = () => {
               <p className='shipping-note text-center'>
                 Free shipping on orders over $1,000.00!
               </p>
+              <span className='text-center'>{`${totalItems} items in your shopping cart`}</span>
               <div className='cart-summary-row'>
                 <span>Subtotal:</span>
                 <span>{total.subtotal.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</span>

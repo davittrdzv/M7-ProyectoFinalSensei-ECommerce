@@ -33,7 +33,7 @@ const AddProducts = () => {
   }
 
   return (
-    <div className='border-top border-danger mt-4_0rem'>
+    <div className='border-top mt-4_0rem'>
       <main className='form-signin w-100 m-auto'>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='card mt-2 mb-2 card-dark'>
