@@ -1,5 +1,5 @@
 import '@/styles/form.css'
-import { swalSuccess, swalError } from '@/utils/sweetAlerts'
+import { swalSuccess, swalError, swalLoading } from '@/utils/sweetAlerts'
 import { useForm } from 'react-hook-form'
 import { schemaSignUp } from '@/utils/formsSchema'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -17,6 +17,7 @@ const SignUp = () => {
 
   const onSubmit = async (data) => {
     try {
+      swalLoading()
       const { status } = await signUpUserService(data)
       if (status === 201) {
         reset()

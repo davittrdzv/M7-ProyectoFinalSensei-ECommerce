@@ -1,6 +1,6 @@
 import '@/styles/form.css'
 import { Link, useNavigate } from 'react-router-dom'
-import { swalSuccess, swalError } from '@/utils/sweetAlerts'
+import { swalSuccess, swalError, swalLoading } from '@/utils/sweetAlerts'
 import { useForm } from 'react-hook-form'
 import { schemaLogin } from '@/utils/formsSchema'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -19,6 +19,7 @@ const Login = () => {
 
   const onSubmit = async (formData) => {
     try {
+      swalLoading()
       const { status, data } = await logInUserService(formData)
       if (status === 200) {
         const userLogged = await login(data.token)

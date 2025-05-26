@@ -7,7 +7,6 @@ const swalSuccess = (message) => {
   return mySwal.fire({
     title: `${message}`,
     icon: 'success',
-    draggable: false,
     confirmButtonColor: '#FFD700',
     background: 'black',
     color: '#ffffff',
@@ -23,7 +22,6 @@ const swalError = (message, error) => {
     text: `${message}`,
     footer: `${error}`,
     icon: 'error',
-    draggable: false,
     confirmButtonColor: '#FFD700',
     background: 'black',
     color: '#ffffff',
@@ -33,4 +31,17 @@ const swalError = (message, error) => {
   })
 }
 
-export { swalSuccess, swalError }
+const swalLoading = (message = 'Awaiting server response, please wait, it may take even a minute.') => {
+  return mySwal.fire({
+    title: message,
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    background: 'black',
+    color: '#ffffff',
+    didOpen: () => {
+      Swal.showLoading()
+    }
+  })
+}
+
+export { swalSuccess, swalError, swalLoading }

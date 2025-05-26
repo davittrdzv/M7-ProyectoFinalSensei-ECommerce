@@ -22,7 +22,7 @@ const ShoppingCart = () => {
                 quantity={product.quantity}
               />
             ))}
-            <div className='container card card-dark cart-summary'>
+            <div className='container card card-dark cart-summary for-hover'>
               <p className='shipping-note text-center'>
                 Free shipping on orders over $1,000.00!
               </p>
