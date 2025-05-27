@@ -76,6 +76,17 @@ Or you can create your own account via the **Sign Up** page.
     ```
 
 ---
+
+## 🌐 Live Website
+
+You can visit the deployed site here:
+
+🔗 https://m7-drv-ecommerce.netlify.app
+
+The project is hosted on Netlify and reflects the latest production build.
+
+---
+
 ## 🎓 Credits
 
 Created by David Rodríguez as part of the DEV.F Web Development Program.
