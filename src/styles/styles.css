@@ -269,3 +269,20 @@ body {
 .dropdown-toggle::after {
   color: var(--gold);
 }
+
+.about-pic {
+  width: 30%;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.github-icon {
+  transition: transform 0.3s ease, fill 0.3s ease;
+  cursor: pointer;
+}
+
+.github-icon:hover {
+  transform: scale(1.1);
+}
