@@ -1,3 +1,5 @@
+import mePic from '@/assets/mePic.png'
+
 const About = () => {
   return (
     <div className='container border-top mt-4_0rem'>
@@ -5,7 +7,7 @@ const About = () => {
         <h1 className='text-center'>About</h1>
       </div>
       <h1 className='text-center'>Welcome to my E-Commerce Website!</h1>
-      <img src='src/assets/mePic.png' alt='Me' className='about-pic d-block mx-auto' />
+      <img src={mePic} alt='Me' className='about-pic d-block mx-auto' />
       <div className='card mt-2 mb-2 card-dark'>
         <h2 className='text-center'>About the Website</h2>
       </div>
