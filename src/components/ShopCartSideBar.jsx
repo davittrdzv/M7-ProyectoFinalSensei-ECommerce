@@ -1,4 +1,4 @@
-import '@/styles/ShopCartSideBar.css'
+import '@/styles/shopCartSideBar.css'
 import { useShopCartContext } from '@/hooks/useShopCartContext'
 
 const ShopCartSideBar = ({ isOpen, onClose }) => {
