@@ -1,5 +1,7 @@
 # E-Commerce Website — Final Project (Module 7, DEV.F)
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/80f43867-a7d4-4ab1-ae47-49a83a6ccce1/deploy-status)](https://app.netlify.com/projects/m7-drv-ecommerce/deploys)
+
 This is a full-stack e-commerce application built as the final project for Module 7 of the Web Development program at DEV.F.
 
 The project simulates a real online store with role-based features for regular users and administrators, mock API integration, and client-side functionality using React and Bootstrap.
@@ -77,13 +79,9 @@ Or you can create your own account via the **Sign Up** page.
 
 ---
 
-## 🌐 Live Website
+## 🌐 Live Demo
 
-You can visit the deployed site here:
-
-🔗 https://m7-drv-ecommerce.netlify.app
-
-The project is hosted on Netlify and reflects the latest production build.
+🔗 Deployed on Netlify: https://m7-drv-ecommerce.netlify.app
 
 ---
 
