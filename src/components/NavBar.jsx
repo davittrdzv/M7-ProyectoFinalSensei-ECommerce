@@ -1,7 +1,7 @@
 import * as bootstrap from 'bootstrap'
 import { NavLink } from 'react-router-dom'
 import SearchBar from '@/components/SearchBar.jsx'
-import UserDropDownMenu from '@/components/UserDropDownMenu.jsx'
+import UserDropdownMenu from '@/components/UserDropdownMenu.jsx'
 import mePic from '@/assets/mePic.png'
 import { useAuthContext } from '@/hooks/useAuthContext'
 import useIsMobile from '@/hooks/useIsMobile'
@@ -71,7 +71,7 @@ const NavBar = () => {
                 ? (
                     !isMobile
                       ? (
-                        <UserDropDownMenu />
+                        <UserDropdownMenu />
                         )
                       : (
                         <>

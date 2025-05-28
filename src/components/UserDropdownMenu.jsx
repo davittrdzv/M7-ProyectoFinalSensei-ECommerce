@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useAuthContext } from '@/hooks/useAuthContext'
 
-const UserDropDownMenu = () => {
+const UserDropdownMenu = () => {
   const { logout, user } = useAuthContext()
 
   return (
@@ -50,4 +50,4 @@ const UserDropDownMenu = () => {
   )
 }
 
-export default UserDropDownMenu
+export default UserDropdownMenu
